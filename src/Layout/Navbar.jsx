@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
     return <div>
-        <div className="navbar bg-base-100 py-12">
+        <div className="navbar bg-base-100 py-6 border border-2">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -82,9 +82,45 @@ const Navbar = () => {
                             <span className="badge badge-sm bg-red-500 text-white rounded-full indicator-item">8</span>
                         </div>
                     </div>
-                    </div>
                 </div>
             </div>
-        </div>;
+        </div>
+        <div className="navbar bg-base-100">
+            <div className="flex-1">
+                {/* <a className="btn btn-ghost text-xl">daisyUI</a> */}
+                <ul className="flex gap-5 font-semibold text-xl">
+                    <li>Home</li>
+                    <li>Shop</li>
+                    <li>Fruits & Vegetables</li>
+                    <li>Beverages</li>
+                    <li>Blog</li>
+                    <li>Contact</li>
+                </ul>
+            </div>
+            <div className="flex-none">
+                <div className="dropdown dropdown-end">
+                    {/* <div tabIndex={0} role="button" className="btn btn-ghost btn-circle"> */}
+                        <div className="indicator">
+                         <ul className="flex gap-5 font-semibold text-xl">
+                            <li>Trending Products</li>
+                            <li>Almost Finished</li>
+                         </ul>
+                        </div>
+                    {/* </div> */}
+                   
+                </div>
+                <div className="dropdown dropdown-end">
+                    
+                    <ul
+                        tabIndex={0}
+                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                        
+                        <li><a>Settings</a></li>
+                        <li><a>Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>;
 };
-        export default Navbar;
+export default Navbar;
