@@ -1,4 +1,6 @@
 const Review = () => {
-  return <div></div>;
+  return <div>
+    <h1>this is review section</h1>
+  </div>;
 };
 export default Review;
