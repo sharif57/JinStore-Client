@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 
 const Main = () => {
-  return <div>
+  return <div className="font-inter">
     <Navbar></Navbar>
     <div className="h-screen">
         <Outlet></Outlet>

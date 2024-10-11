@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 const Banner = () => {
     return (
-        <div className="w-full h-screen">
+        <div className="w-full">
             <div
                 className="bg-no-repeat bg-cover w-full h-full mt-6"
                 style={{ backgroundImage: `url('/slider-01.jpg (1).png')` }}>
