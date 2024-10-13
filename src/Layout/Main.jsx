@@ -5,7 +5,7 @@ import Footer from "./Footer";
 const Main = () => {
   return <div className="font-inter">
     <Navbar></Navbar>
-    <div className="h-screen">
+    <div className="">
         <Outlet></Outlet>
     </div>
     <Footer></Footer>
