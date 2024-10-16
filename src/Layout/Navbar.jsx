@@ -87,31 +87,44 @@ const Navbar = () => {
         </div>
         <div className="navbar bg-base-100">
             <div className="flex-1">
-                <ul className="flex gap-5 font-semibold text-xl">
-                    <li>Home</li>
-                    <li>Shop</li>
-                    <li>Fruits & Vegetables</li>
-                    <li>Beverages</li>
-                    <li>Blog</li>
-                    <li>Contact</li>
-                </ul>
+                <div className="flex-none">
+                    <ul className="menu menu-horizontal px-1">
+                        <li>
+                            <details>
+                                <summary>Home</summary>
+                                <ul className="bg-base-100 rounded-t-none p-2">
+                                    <li><a>Home 4</a></li>
+                                    <li><a>Home 2</a></li>
+                                </ul>
+                            </details>
+                        </li>
+                        <Link to={'/shop'}><li><a>Shop</a></li></Link>
+                        <li><a>Fruits & Vegetables</a></li>
+                        <li><a>Beverages</a></li>
+                        <li><a>Blog</a></li>
+                        <li><a>Contact</a></li>
+
+                    </ul>
+                </div>
+
             </div>
+
             <div className="flex-none">
                 <div className="dropdown dropdown-end">
-                        <div className="indicator">
-                         <ul className="flex gap-5 font-semibold text-xl">
+                    <div className="indicator">
+                        <ul className="flex gap-5 font-medium text-xl">
                             <li>Trending Products</li>
                             <li>Almost Finished</li>
-                         </ul>
-                        </div>
-                   
+                        </ul>
+                    </div>
+
                 </div>
                 <div className="dropdown dropdown-end">
-                    
+
                     <ul
                         tabIndex={0}
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                        
+
                         <li><a>Settings</a></li>
                         <li><a>Logout</a></li>
                     </ul>
