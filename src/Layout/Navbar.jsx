@@ -64,10 +64,10 @@ const Navbar = () => {
                 {/* <a className="btn">Button</a> */}
                 <div className="space-x-3 flex-row flex items-center justify-between gap-3">
                     <img src="/Vector.png" alt="" />
-                    <div>
+                    <Link to={'/login'}>
                         <p className="text-sm">Sign In</p>
                         <h1 className="font-bold">Account</h1>
-                    </div>
+                    </Link>
                     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
                         <div className="indicator">
                             {/* <img src="/Link (1).png" alt="" /> */}
