@@ -21,7 +21,7 @@ const AuthProvider = ({ children }) => {
     const registerUser = (email, password) => {
         setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
-        .then(result => console.log(result.user))
+            .then(result => console.log(result.user))
     }
 
 
@@ -76,6 +76,17 @@ const AuthProvider = ({ children }) => {
     //         unSubscribe()
     //     }
     // }, [])
+    useEffect(() => {
+        const unSubscribe = onAuthStateChanged(auth, currentUser => {
+            console.log('current value of the current user, ', currentUser);
+            setUser(currentUser)
+            setLoading(false)
+        });
+        return () => {
+            unSubscribe()
+        }
+    }, [])
+    
 
     const authInfo = {
         registerUser,

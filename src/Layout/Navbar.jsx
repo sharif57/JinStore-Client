@@ -1,8 +1,20 @@
-import { Heart, MapPin } from "lucide-react";
+import { Heart, LogOut, MapPin } from "lucide-react";
+import { useContext } from "react";
 import { FaShoppingCart } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext)
+    console.log(user?.displayName);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => console.log('logout successfully'))
+            .catch(error => console.error(error))
+
+    }
+
     return <div>
         <div className="navbar bg-base-100 py-6  border-2">
             <div className="navbar-start">
@@ -37,6 +49,8 @@ const Navbar = () => {
                 </div>
                 <Link className="btn btn-ghost text-xl"><img src="\Group 70.png" alt="" /></Link>
                 <MapPin className="size-8" />
+
+
                 <div className="pl-5 flex flex-col items-start">
                     <p>Deliver to</p>
                     <h1 className="font-bold">All</h1>
@@ -63,11 +77,62 @@ const Navbar = () => {
             <div className="navbar-end">
                 {/* <a className="btn">Button</a> */}
                 <div className="space-x-3 flex-row flex items-center justify-between gap-3">
-                    <img src="/Vector.png" alt="" />
-                    <Link to={'/login'}>
-                        <p className="text-sm">Sign In</p>
-                        <h1 className="font-bold">Account</h1>
-                    </Link>
+
+                    {
+                        user ? (
+                            <div className='dropdown dropdown-start z-50'>
+                                <div
+                                    tabIndex={0}
+                                    role='button'
+                                    className='btn btn-ghost btn-circle avatar'
+                                >
+                                    <div title={user?.displayName} className='w-10 rounded-full'>
+                                        <img
+                                            referrerPolicy='no-referrer'
+                                            alt='User Profile Photo'
+                                            src={user?.photoURL}
+                                        />
+                                    </div>
+                                </div>
+                                <ul
+                                    tabIndex={0}
+                                    className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52'
+                                >
+                                    <li>
+                                        <NavLink className={({ isActive }) => isActive ? 'text-primary font-bold ' : 'font-bold'}>
+                                            {user?.displayName}
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink to='dashboard' className={({ isActive }) => isActive ? 'text-primary font-bold ' : 'font-bold'}>
+                                            Dashboard
+                                        </NavLink>
+                                    </li>
+                                    <li className='mt-2'>
+                                        <button onClick={handleLogOut} className='btn bg-white rounded-full block text-center flex shadow-xl'>Logout <LogOut /></button>
+                                    </li>
+                                </ul>
+                            </div>
+                        ) : (
+                            <img src="/Vector.png" alt="Placeholder" />
+                        )
+                    }
+
+                    {/* <h1>name:{user?.displayName}</h1>
+                    <img className="size-10" src={user?.photoURL} alt="" /> */}
+                    {
+                        !user && (
+                            <ul>
+                                <Link to={'/login'}>
+                                    <p className="text-sm">Sign In</p>
+                                    <h1 className="font-bold">Account</h1>
+                                </Link>
+                            </ul>
+                        )
+                    }
+
+
+
                     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
                         <div className="indicator">
                             {/* <img src="/Link (1).png" alt="" /> */}
