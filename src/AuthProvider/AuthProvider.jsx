@@ -2,7 +2,7 @@
 
 import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
-import useAxiosPublic from "../hooks/useAxiosPublic";
+// import useAxiosPublic from "../hooks/useAxiosPublic";
 import { auth } from "../firebase/firebase.config";
 
 export const AuthContext = createContext(null)
@@ -16,7 +16,7 @@ const AuthProvider = ({ children }) => {
 
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
-    const axiosPublic = useAxiosPublic()
+    // const axiosPublic = useAxiosPublic()
 
     const registerUser = (email, password) => {
         setLoading(true)
@@ -52,30 +52,30 @@ const AuthProvider = ({ children }) => {
         return signOut(auth)
     }
 
-    useEffect(() => {
-        const unSubscribe = onAuthStateChanged(auth, currentUser => {
-            console.log('current value of the current user, ', currentUser);
-            setUser(currentUser)
-            if(currentUser){
-                // get token and store client
-                const userInfo = {email: currentUser.email}
-                axiosPublic.post('/jwt', userInfo)
-                .then(res => {
-                    if(res.data){
-                        localStorage.setItem('access-token', res.data.token)
-                    }
-                })
-            }
-            else{
-                //do somethings
-                localStorage.removeItem('access-token')
-            }
-            setLoading(false)
-        });
-        return () => {
-            unSubscribe()
-        }
-    }, [])
+    // useEffect(() => {
+    //     const unSubscribe = onAuthStateChanged(auth, currentUser => {
+    //         console.log('current value of the current user, ', currentUser);
+    //         setUser(currentUser)
+    //         if(currentUser){
+    //             // get token and store client
+    //             const userInfo = {email: currentUser.email}
+    //             axiosPublic.post('/jwt', userInfo)
+    //             .then(res => {
+    //                 if(res.data){
+    //                     localStorage.setItem('access-token', res.data.token)
+    //                 }
+    //             })
+    //         }
+    //         else{
+    //             //do somethings
+    //             localStorage.removeItem('access-token')
+    //         }
+    //         setLoading(false)
+    //     });
+    //     return () => {
+    //         unSubscribe()
+    //     }
+    // }, [])
 
     const authInfo = {
         registerUser,
