@@ -80,7 +80,7 @@ const AllMenu = () => {
                         <img
                             src={shop.image}
                             alt=""
-                            className="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
+                            className="h-64 w-full object-cover transition duration-500 group-hover:scale-150 sm:h-72"
                         />
 
                         <div className="relative border border-gray-100 bg-white space-y-3 p-4">
@@ -96,9 +96,8 @@ const AllMenu = () => {
                                 <span className="text-black pl-3 text-xl line-through">${shop.offer}</span>
                             </p>
 
-
                             <div  className="flex justify-between items-center mt-8">
-                                <FaCartShopping className="size-10 " />
+                                <FaCartShopping className="size-10 cursor-pointer " />
                                 <p className="text-xl font-semibold text-green-500">In Stock</p>
                             </div>
 
