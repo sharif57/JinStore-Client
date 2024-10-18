@@ -154,19 +154,12 @@ const Navbar = () => {
             <div className="flex-1">
                 <div className="flex-none">
                     <ul className="menu menu-horizontal px-1">
-                        <li>
-                            <details>
-                                <summary>Home</summary>
-                                <ul className="bg-base-100 rounded-t-none p-2">
-                                    <li><a>Home 4</a></li>
-                                    <li><a>Home 2</a></li>
-                                </ul>
-                            </details>
-                        </li>
+                        
+                        <Link to={'/'}><li><a>Home</a></li></Link>
                         <Link to={'/shop'}><li><a>Shop</a></li></Link>
                         <li><a>Fruits & Vegetables</a></li>
                         <li><a>Beverages</a></li>
-                        <li><a>Blog</a></li>
+                        <Link to={'/blogs'}><li><a>Blog</a></li></Link>
                         <li><a>Contact</a></li>
 
                     </ul>

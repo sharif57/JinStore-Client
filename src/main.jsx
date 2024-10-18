@@ -13,6 +13,7 @@ import ShopDetails from './Components/Shop/ShopDetails';
 import Login from './Components/Home/Login';
 import Register from './Components/Home/Register';
 import AuthProvider from './AuthProvider/AuthProvider';
+import Blogs from './Components/Blogs/Blogs';
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
         path: '/shopDetails',
         element: <ShopDetails></ShopDetails>
       },
+      {
+        path:'/blogs',
+        element:<Blogs></Blogs>
+      }
 
     ]
   },
