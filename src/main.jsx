@@ -14,6 +14,8 @@ import Login from './Components/Home/Login';
 import Register from './Components/Home/Register';
 import AuthProvider from './AuthProvider/AuthProvider';
 import Blogs from './Components/Blogs/Blogs';
+import Work from './Components/Home/Work';
+import Beverages from './Components/Beverages/Beverages';
 
 const router = createBrowserRouter([
   {
@@ -33,8 +35,16 @@ const router = createBrowserRouter([
         element: <ShopDetails></ShopDetails>
       },
       {
-        path:'/blogs',
-        element:<Blogs></Blogs>
+        path: '/blogs',
+        element: <Blogs></Blogs>
+      },
+      {
+        path: '/work',
+        element: <Work></Work>
+      },
+      {
+        path:'/beverages',
+        element:<Beverages></Beverages>
       }
 
     ]

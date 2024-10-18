@@ -154,11 +154,11 @@ const Navbar = () => {
             <div className="flex-1">
                 <div className="flex-none">
                     <ul className="menu menu-horizontal px-1">
-                        
+
                         <Link to={'/'}><li><a>Home</a></li></Link>
                         <Link to={'/shop'}><li><a>Shop</a></li></Link>
                         <li><a>Fruits & Vegetables</a></li>
-                        <li><a>Beverages</a></li>
+                        <Link to={'/beverages'}><li><a>Beverages</a></li></Link>
                         <Link to={'/blogs'}><li><a>Blog</a></li></Link>
                         <li><a>Contact</a></li>
 
@@ -171,7 +171,9 @@ const Navbar = () => {
                 <div className="dropdown dropdown-end">
                     <div className="indicator">
                         <ul className="flex gap-5 font-medium text-xl">
-                            <li>Trending Products</li>
+                            <Link to={'/work'}>
+                                <li>How it works</li>
+                            </Link>
                             <li>Almost Finished</li>
                         </ul>
                     </div>
