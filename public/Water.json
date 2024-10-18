@@ -1,0 +1,82 @@
+[
+    {
+        "name": "Evian Natural Spring Water",
+        "price": 2.49,
+        "discount": 10,
+        "image": "https://example.com/images/evian-water.jpg",
+        "description": "Pure natural spring water from the French Alps, offering a refreshing and clean taste.",
+        "volume": "500ml"
+    },
+    {
+        "name": "Fiji Natural Artesian Water",
+        "price": 3.99,
+        "discount": 15,
+        "image": "https://example.com/images/fiji-water.jpg",
+        "description": "Bottled from an underground artesian aquifer in Fiji, known for its soft and smooth taste.",
+        "volume": "1L"
+    },
+    {
+        "name": "Smartwater Vapor Distilled Water",
+        "price": 2.79,
+        "discount": 5,
+        "image": "https://example.com/images/smartwater.jpg",
+        "description": "Vapor-distilled water with added electrolytes for a crisp and refreshing taste.",
+        "volume": "600ml"
+    },
+    {
+        "name": "Perrier Carbonated Mineral Water",
+        "price": 1.99,
+        "discount": 0,
+        "image": "https://example.com/images/perrier-water.jpg",
+        "description": "Sparkling mineral water with a distinctive taste, perfect as a refreshing drink or mixer.",
+        "volume": "330ml"
+    },
+    {
+        "name": "San Pellegrino Sparkling Natural Mineral Water",
+        "price": 2.59,
+        "discount": 10,
+        "image": "https://example.com/images/san-pellegrino.jpg",
+        "description": "Naturally carbonated mineral water from Italy, offering a refreshing and lightly bubbly experience.",
+        "volume": "750ml"
+    },
+    {
+        "name": "Aquafina Purified Drinking Water",
+        "price": 1.49,
+        "discount": 0,
+        "image": "https://example.com/images/aquafina-water.jpg",
+        "description": "Purified drinking water with a clean and crisp taste, perfect for daily hydration.",
+        "volume": "500ml"
+    },
+    {
+        "name": "Dasani Purified Water",
+        "price": 1.29,
+        "discount": 5,
+        "image": "https://example.com/images/dasani-water.jpg",
+        "description": "Purified water enhanced with minerals for a fresh and pure taste.",
+        "volume": "500ml"
+    },
+    {
+        "name": "Voss Still Water",
+        "price": 3.49,
+        "discount": 20,
+        "image": "https://example.com/images/voss-water.jpg",
+        "description": "Premium still water from Norway, known for its exceptional purity and stylish bottle.",
+        "volume": "800ml"
+    },
+    {
+        "name": "Nestlé Pure Life Purified Water",
+        "price": 1.19,
+        "discount": 0,
+        "image": "https://example.com/images/nestle-water.jpg",
+        "description": "Clean and refreshing purified water, sourced from carefully selected wells.",
+        "volume": "500ml"
+    },
+    {
+        "name": "Crystal Geyser Alpine Spring Water",
+        "price": 1.39,
+        "discount": 10,
+        "image": "https://example.com/images/crystal-geyser-water.jpg",
+        "description": "Bottled at the source from natural alpine springs, offering a crisp and refreshing taste.",
+        "volume": "1L"
+    }
+]

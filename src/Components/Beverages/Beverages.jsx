@@ -9,7 +9,7 @@ const Beverages = () => {
             <Link to={'/beverages'}>Beverages</Link>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 mt-14 mb-14">
-            <div href="#" className="group relative block bg-black  border-2  shadow-lg ">
+            <Link to={'/tea'} className="group relative block bg-black  border-2  shadow-lg ">
                 <img
                     alt=""
                     src="/tea.webp"
@@ -31,8 +31,8 @@ const Beverages = () => {
                         </div>
                     </div>
                 </div>
-            </div>
-            <div href="#" className="group relative block bg-black  border-2  shadow-lg">
+            </Link>
+            <Link to={'/water'} className="group relative block bg-black  border-2  shadow-lg">
                 <img
                     alt=""
                     src="/water.webp"
@@ -54,7 +54,7 @@ const Beverages = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </Link>
             <div href="#" className="group relative block bg-black  border-2  shadow-lg">
                 <img
                     alt=""

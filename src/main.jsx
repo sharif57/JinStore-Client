@@ -16,6 +16,8 @@ import AuthProvider from './AuthProvider/AuthProvider';
 import Blogs from './Components/Blogs/Blogs';
 import Work from './Components/Home/Work';
 import Beverages from './Components/Beverages/Beverages';
+import Tea from './Tea/Tea';
+import Water from './Water/Water';
 
 const router = createBrowserRouter([
   {
@@ -45,6 +47,14 @@ const router = createBrowserRouter([
       {
         path:'/beverages',
         element:<Beverages></Beverages>
+      },
+      {
+        path:'/tea',
+        element:<Tea></Tea>
+      },
+      {
+        path:'/water',
+        element:<Water></Water>
       }
 
     ]

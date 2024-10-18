@@ -2,24 +2,24 @@ import { ChevronRight } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const Tea = () => {
+const Water = () => {
 
     const [teas, setTeas] = useState([])
 
     useState(() => {
-        fetch('/tea.json')
+        fetch('/Water.json')
             .then(res => res.json())
             .then(data => setTeas(data))
         // console.log(data);
     }, [])
 
-    return <div>
+    return <div className="p-2">
         <div className="space-x-5 flex my-6">
             <Link to={'/'}>Home</Link>
             <ChevronRight />
             <Link to={'/beverages'}>Beverages</Link>
             <ChevronRight />
-            <Link to={'/tea'}>Tea</Link>
+            <Link to={'/water'}>Water</Link>
         </div>
 
         <div>
@@ -40,7 +40,6 @@ const Tea = () => {
                 }
             </div>
         </div>
-
     </div>;
 };
-export default Tea;
+export default Water;
