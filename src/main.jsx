@@ -18,6 +18,9 @@ import Work from './Components/Home/Work';
 import Beverages from './Components/Beverages/Beverages';
 import Tea from './Tea/Tea';
 import Water from './Water/Water';
+import Juice from './Juice/Juice';
+import Drinks from './Drinks/Drinks';
+import Fruits from './Fruits & Vegetables/Fruits';
 
 const router = createBrowserRouter([
   {
@@ -55,6 +58,18 @@ const router = createBrowserRouter([
       {
         path:'/water',
         element:<Water></Water>
+      },
+      {
+        path:'/juice',
+        element:<Juice></Juice>
+      },
+      {
+        path:'/drinks',
+        element:<Drinks></Drinks>
+      },
+      {
+        path:'/fruits',
+        element:<Fruits></Fruits>
       }
 
     ]

@@ -1,0 +1,83 @@
+[
+    {
+      "name": "Organic Broccoli",
+      "price": 2.99,
+      "discount": 10,
+      "image": "https://i.ibb.co.com/BLrn57Z/pexels-solareflares-2751755.jpg",
+      "description": "Fresh organic broccoli, rich in vitamins and minerals, perfect for salads and stir-fry.",
+      "weight": "500g"
+    },
+    {
+      "name": "Carrots",
+      "price": 1.79,
+      "discount": 5,
+      "image": "https://i.ibb.co.com/BLrn57Z/pexels-solareflares-2751755.jpg",
+      "description": "Crunchy and sweet carrots, great for snacking or adding to your favorite dishes.",
+      "weight": "1kg"
+    },
+    {
+      "name": "Red Bell Peppers",
+      "price": 3.49,
+      "discount": 0,
+      "image": "https://i.ibb.co.com/BLrn57Z/pexels-solareflares-2751755.jpg",
+      "description": "Fresh and vibrant red bell peppers, packed with flavor and nutrients.",
+      "weight": "400g"
+    },
+    {
+      "name": "Cucumbers",
+      "price": 2.29,
+      "discount": 5,
+      "image": "https://i.ibb.co.com/BLrn57Z/pexels-solareflares-2751755.jpg",
+      "description": "Crisp and hydrating cucumbers, ideal for salads, sandwiches, or as a healthy snack.",
+      "weight": "700g"
+    },
+    {
+      "name": "Spinach",
+      "price": 1.99,
+      "discount": 0,
+      "image": "https://i.ibb.co.com/BLrn57Z/pexels-solareflares-2751755.jpg",
+      "description": "Fresh spinach leaves, packed with iron and perfect for salads or sautéing.",
+      "weight": "300g"
+    },
+    {
+      "name": "Zucchini",
+      "price": 2.59,
+      "discount": 10,
+      "image": "https://i.ibb.co.com/BLrn57Z/pexels-solareflares-2751755.jpg",
+      "description": "Fresh zucchini, ideal for grilling, stir-frying, or adding to your pasta dishes.",
+      "weight": "500g"
+    },
+    {
+      "name": "Cherry Tomatoes",
+      "price": 3.99,
+      "discount": 15,
+      "image": "https://i.ibb.co.com/BLrn57Z/pexels-solareflares-2751755.jpg",
+      "description": "Juicy and sweet cherry tomatoes, perfect for snacking or adding to salads.",
+      "weight": "250g"
+    },
+    {
+      "name": "Eggplant",
+      "price": 1.89,
+      "discount": 5,
+      "image": "https://i.ibb.co.com/BLrn57Z/pexels-solareflares-2751755.jpg",
+      "description": "Fresh eggplant, ideal for grilling, roasting, or making baba ganoush.",
+      "weight": "600g"
+    },
+    {
+      "name": "Organic Kale",
+      "price": 4.49,
+      "discount": 10,
+      "image": "https://i.ibb.co.com/BLrn57Z/pexels-solareflares-2751755.jpg",
+      "description": "Fresh organic kale, a superfood packed with antioxidants and perfect for smoothies or salads.",
+      "weight": "300g"
+    },
+    {
+      "name": "Sweet Potatoes",
+      "price": 2.99,
+      "discount": 0,
+      "image": "https://i.ibb.co.com/BLrn57Z/pexels-solareflares-2751755.jpg",
+      "description": "Naturally sweet and nutritious sweet potatoes, great for roasting or mashing.",
+      "weight": "1kg"
+    }
+  ]
+  

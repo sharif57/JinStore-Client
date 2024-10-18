@@ -55,7 +55,7 @@ const Beverages = () => {
                     </div>
                 </div>
             </Link>
-            <div href="#" className="group relative block bg-black  border-2  shadow-lg">
+            <Link to={'/juice'} className="group relative block bg-black  border-2  shadow-lg">
                 <img
                     alt=""
                     src="/juice.webp"
@@ -77,8 +77,8 @@ const Beverages = () => {
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="group relative block bg-black border-2 shadow-lg">
+            </Link>
+            <Link to={'/drinks'} className="group relative block bg-black border-2 shadow-lg">
                 <img
                     alt="Tea collection"
                     src="/soft-drinks.webp"
@@ -102,7 +102,7 @@ const Beverages = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </Link>
 
 
 

@@ -157,7 +157,7 @@ const Navbar = () => {
 
                         <Link to={'/'}><li><a>Home</a></li></Link>
                         <Link to={'/shop'}><li><a>Shop</a></li></Link>
-                        <li><a>Fruits & Vegetables</a></li>
+                        <Link to={'/fruits'}><li><a>Fruits & Vegetables</a></li></Link>
                         <Link to={'/beverages'}><li><a>Beverages</a></li></Link>
                         <Link to={'/blogs'}><li><a>Blog</a></li></Link>
                         <li><a>Contact</a></li>

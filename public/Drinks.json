@@ -1,0 +1,82 @@
+[
+    {
+        "name": "Coca-Cola Classic",
+        "price": 1.99,
+        "discount": 5,
+        "image": "https://i.ibb.co.com/k2HQgPr/pexels-pixabay-50593.jpg",
+        "description": "Classic Coca-Cola, a refreshing and iconic carbonated soft drink with a crisp and sweet taste.",
+        "volume": "500ml"
+    },
+    {
+        "name": "Pepsi Cola",
+        "price": 1.89,
+        "discount": 0,
+        "image": "https://i.ibb.co.com/k2HQgPr/pexels-pixabay-50593.jpg",
+        "description": "Pepsi, a popular carbonated beverage with a bold, sweet, and refreshing taste.",
+        "volume": "500ml"
+    },
+    {
+        "name": "Sprite Lemon-Lime Soda",
+        "price": 1.79,
+        "discount": 10,
+        "image": "https://i.ibb.co.com/k2HQgPr/pexels-pixabay-50593.jpg",
+        "description": "Crisp, clean, and refreshing lemon-lime flavored soda, perfect for a refreshing drink.",
+        "volume": "330ml"
+    },
+    {
+        "name": "Fanta Orange",
+        "price": 1.69,
+        "discount": 5,
+        "image": "https://i.ibb.co.com/k2HQgPr/pexels-pixabay-50593.jpg",
+        "description": "Fanta Orange, a sweet and tangy carbonated beverage with the taste of real oranges.",
+        "volume": "500ml"
+    },
+    {
+        "name": "7UP Original Lemon-Lime Soda",
+        "price": 1.49,
+        "discount": 0,
+        "image": "https://i.ibb.co.com/k2HQgPr/pexels-pixabay-50593.jpg",
+        "description": "Classic lemon-lime soda with a light, refreshing taste.",
+        "volume": "330ml"
+    },
+    {
+        "name": "Mountain Dew",
+        "price": 1.89,
+        "discount": 0,
+        "image": "https://i.ibb.co.com/k2HQgPr/pexels-pixabay-50593.jpg",
+        "description": "Mountain Dew, a citrus-flavored soda with a bold and unique taste.",
+        "volume": "500ml"
+    },
+    {
+        "name": "Dr Pepper",
+        "price": 2.29,
+        "discount": 10,
+        "image": "https://i.ibb.co.com/k2HQgPr/pexels-pixabay-50593.jpg",
+        "description": "Dr Pepper, a unique blend of 23 flavors for a one-of-a-kind taste.",
+        "volume": "500ml"
+    },
+    {
+        "name": "Coca-Cola Diet",
+        "price": 2.49,
+        "discount": 5,
+        "image": "https://i.ibb.co.com/k2HQgPr/pexels-pixabay-50593.jpg",
+        "description": "Diet Coca-Cola, offering the classic Coca-Cola taste with zero calories.",
+        "volume": "500ml"
+    },
+    {
+        "name": "Pepsi Diet",
+        "price": 2.39,
+        "discount": 0,
+        "image": "https://i.ibb.co.com/k2HQgPr/pexels-pixabay-50593.jpg",
+        "description": "Diet Pepsi, offering the classic Pepsi flavor with fewer calories.",
+        "volume": "500ml"
+    },
+    {
+        "name": "Root Beer A&W",
+        "price": 2.19,
+        "discount": 10,
+        "image": "https://i.ibb.co.com/k2HQgPr/pexels-pixabay-50593.jpg",
+        "description": "A&W Root Beer, a rich and creamy soft drink with a smooth and nostalgic flavor.",
+        "volume": "355ml"
+    }
+]

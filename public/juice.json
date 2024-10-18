@@ -1,0 +1,83 @@
+[
+    {
+      "name": "Tropicana Orange Juice",
+      "price": 3.99,
+      "discount": 10,
+      "image": "https://i.ibb.co.com/D4QsCby/iced-orange-cocktail-table.jpg",
+      "description": "100% pure orange juice with no added sugar, a rich source of vitamin C.",
+      "volume": "1L"
+    },
+    {
+      "name": "Simply Apple Juice",
+      "price": 2.79,
+      "discount": 5,
+      "image": "https://i.ibb.co.com/D4QsCby/iced-orange-cocktail-table.jpg",
+      "description": "Freshly pressed apple juice, providing a natural and refreshing flavor.",
+      "volume": "1L"
+    },
+    {
+      "name": "Ocean Spray Cranberry Juice",
+      "price": 4.49,
+      "discount": 15,
+      "image": "https://i.ibb.co.com/D4QsCby/iced-orange-cocktail-table.jpg",
+      "description": "A tart and tangy cranberry juice, packed with antioxidants and perfect for health-conscious drinkers.",
+      "volume": "1.5L"
+    },
+    {
+      "name": "Minute Maid Lemonade",
+      "price": 1.99,
+      "discount": 0,
+      "image": "https://i.ibb.co.com/D4QsCby/iced-orange-cocktail-table.jpg",
+      "description": "Refreshing lemonade made from real lemons, perfect for a hot summer day.",
+      "volume": "500ml"
+    },
+    {
+      "name": "V8 Original Vegetable Juice",
+      "price": 2.99,
+      "discount": 10,
+      "image": "https://i.ibb.co.com/D4QsCby/iced-orange-cocktail-table.jpg",
+      "description": "A healthy blend of vegetables, providing vitamins and minerals in every sip.",
+      "volume": "1L"
+    },
+    {
+      "name": "POM Wonderful Pomegranate Juice",
+      "price": 5.49,
+      "discount": 20,
+      "image": "https://i.ibb.co.com/D4QsCby/iced-orange-cocktail-table.jpg",
+      "description": "100% pomegranate juice, rich in antioxidants and known for its heart health benefits.",
+      "volume": "750ml"
+    },
+    {
+      "name": "Naked Green Machine Juice",
+      "price": 3.29,
+      "discount": 5,
+      "image": "https://i.ibb.co.com/D4QsCby/iced-orange-cocktail-table.jpg",
+      "description": "A nutrient-packed juice smoothie blend with apples, kiwi, and super greens like spirulina and chlorella.",
+      "volume": "450ml"
+    },
+    {
+      "name": "Florida's Natural Orange Juice",
+      "price": 4.99,
+      "discount": 0,
+      "image": "https://i.ibb.co.com/D4QsCby/iced-orange-cocktail-table.jpg",
+      "description": "Premium orange juice made from Florida-grown oranges, with a sweet and tangy flavor.",
+      "volume": "1.5L"
+    },
+    {
+      "name": "Bolthouse Farms Carrot Juice",
+      "price": 3.49,
+      "discount": 10,
+      "image": "https://i.ibb.co.com/D4QsCby/iced-orange-cocktail-table.jpg",
+      "description": "Pure carrot juice packed with vitamin A, great for eye health and a refreshing drink.",
+      "volume": "1L"
+    },
+    {
+      "name": "Mott's 100% Apple Juice",
+      "price": 2.59,
+      "discount": 5,
+      "image": "https://i.ibb.co.com/D4QsCby/iced-orange-cocktail-table.jpg",
+      "description": "A naturally sweet apple juice, with no added sugar, perfect for the whole family.",
+      "volume": "1L"
+    }
+  ]
+  

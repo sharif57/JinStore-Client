@@ -28,11 +28,11 @@ const Water = () => {
                     teas.map((tea, index) => <div key={index} className="border shadow-lg p-2 rounded-lg hover:shadow-2xl hover:bg-fuchsia-50">
                         <img className="size-[300px]" src={tea.image} alt="" />
                         <div className="text-center space-y-2 mt-2">
-                            <h1 className="text-center text-xl font-medium">{tea.name}</h1>
-                            <p>{tea.weight}</p>
+                        <h1 className="text-center text-xl font-medium">{tea.name.slice(0, 20)}...</h1>
+                        <p>{tea.weight}</p>
                             <div className="flex items-center justify-center gap-2">
                                 <h1 className="text-2xl font-bold text-orange-500">${tea.price}</h1>
-                                <h1 className="line-through text-xl text-gray-500 font-semibold pt-4">${tea.discount}</h1>
+                                <h1 className="line-through text-xl text-gray-500 font-medium pt-4">${tea.discount}</h1>
                             </div>
                             <button className="btn btn-outline w-full">Add to Cart</button>
                         </div>
