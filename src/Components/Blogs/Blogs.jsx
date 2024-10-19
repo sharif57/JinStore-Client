@@ -1,5 +1,9 @@
+
 const Blogs = () => {
+   
+
     return <div className="p-2">
+
         <div className="flex gap-8">
             <div className="w-2/3">
                 <img src="/Link → blog-post-01.jpg.png" alt="" />

@@ -41,7 +41,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/blogs',
-        element: <Blogs></Blogs>
+        element: <Blogs></Blogs>,
       },
       {
         path: '/work',
@@ -53,7 +53,8 @@ const router = createBrowserRouter([
       },
       {
         path:'/tea',
-        element:<Tea></Tea>
+        element:<Tea></Tea>,
+        // : () => fetch('http://localhost:3000/tea')
       },
       {
         path:'/water',

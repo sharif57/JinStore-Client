@@ -12,7 +12,7 @@ const Fruits = () => {
     }, [])
 
     return <div>
-        <div className="grid grid-cols-1 lg:grid-cols-5 mt-10  gap-6  ">
+        <div className="grid grid-cols-1 lg:grid-cols-5 mt-10  gap-6  p-2">
             {
                 shops.map((shop, index) =>
                     <div key={index} className="group relative block overflow-hidden border-2 ">
@@ -47,10 +47,7 @@ const Fruits = () => {
                                 <span className="text-black pl-3 text-xl line-through">${shop.discount}</span>
                             </p>
 
-                            {/* <div className="flex justify-between items-center mt-8">
-                                <FaCartShopping className="size-10 cursor-pointer " />
-                                <p className="text-xl font-semibold text-green-500">In Stock</p>
-                            </div> */}
+                            
                             <button className="btn btn-outline w-full rounded-full border-blue-400">Add to Cart</button>
 
 
