@@ -22,6 +22,8 @@ import Juice from './Juice/Juice';
 import Drinks from './Drinks/Drinks';
 import Fruits from './Fruits & Vegetables/Fruits';
 import WaterDetails from './Water/WaterDetails';
+import JuiceDetails from './Juice/JuiceDetails';
+import DrinksDetails from './Drinks/DrinksDetails';
 
 const router = createBrowserRouter([
   {
@@ -50,17 +52,17 @@ const router = createBrowserRouter([
         element: <Work></Work>
       },
       {
-        path:'/beverages',
-        element:<Beverages></Beverages>
+        path: '/beverages',
+        element: <Beverages></Beverages>
       },
       {
-        path:'/tea',
-        element:<Tea></Tea>,
+        path: '/tea',
+        element: <Tea></Tea>,
         // : () => fetch('http://localhost:3000/tea')
       },
       {
-        path:'/water',
-        element:<Water></Water>
+        path: '/water',
+        element: <Water></Water>
       },
       {
         path: '/waterDetails/:id',
@@ -68,16 +70,26 @@ const router = createBrowserRouter([
         loader: ({ params }) => fetch(`http://localhost:5000/water/${params.id}`)
       },
       {
-        path:'/juice',
-        element:<Juice></Juice>
+        path: '/juice',
+        element: <Juice></Juice>,
       },
       {
-        path:'/drinks',
-        element:<Drinks></Drinks>
+        path: '/juiceDetails/:id',
+        element: <JuiceDetails></JuiceDetails>,
+        loader: ({ params }) => fetch(`http://localhost:5000/juice/${params.id}`)
       },
       {
-        path:'/fruits',
-        element:<Fruits></Fruits>
+        path: '/drinks',
+        element: <Drinks></Drinks>
+      },
+      {
+        path: '/drinksDetails/:id',
+        element: <DrinksDetails></DrinksDetails>,
+        loader: ({ params }) => fetch(`http://localhost:5000/drinks/${params.id}`)
+      },
+      {
+        path: '/fruits',
+        element: <Fruits></Fruits>
       }
 
     ]

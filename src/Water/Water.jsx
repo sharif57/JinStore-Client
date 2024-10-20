@@ -47,21 +47,14 @@ const Water = () => {
                                     <p className="text-xs p-2 bg-orange-200 rounded-full text-black font-medium ">In Stock</p>
                                 </div>
 
-
-
                                 <h3 className="mt-1.5 text-lg font-medium text-gray-900">{shop.name.slice(0,25)}...</h3>
-
-
 
                                 <p className="text-orange-400 text-3xl font-semibold ">
                                     ${shop.price}
                                     <span className="text-black pl-3 text-xl line-through">${shop.discount}</span>
                                 </p>
 
-
                                 <Link to={`/waterDetails/${shop._id}`} className="btn btn-outline w-full rounded-full border-blue-400">Add to Cart</Link>
-
-
 
                             </div>
                         </div>
