@@ -7,7 +7,7 @@ const Water = () => {
     const [teas, setTeas] = useState([])
 
     useState(() => {
-        fetch('/Water.json')
+        fetch('http://localhost:5000/water')
             .then(res => res.json())
             .then(data => setTeas(data))
         // console.log(data);
@@ -59,7 +59,7 @@ const Water = () => {
                                 </p>
 
 
-                                <button className="btn btn-outline w-full rounded-full border-blue-400">Add to Cart</button>
+                                <Link to={`/waterDetails/${shop._id}`} className="btn btn-outline w-full rounded-full border-blue-400">Add to Cart</Link>
 
 
 

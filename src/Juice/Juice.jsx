@@ -7,7 +7,7 @@ const Juice = () => {
     const [teas, setTeas] = useState([])
 
     useState(() => {
-        fetch('/juice.json')
+        fetch('http://localhost:5000/juice')
             .then(res => res.json())
             .then(data => setTeas(data))
         // console.log(data);
@@ -20,7 +20,7 @@ const Juice = () => {
                 <ChevronRight />
                 <Link to={'/beverages'}>Beverages</Link>
                 <ChevronRight />
-                <Link to={'/water'}>Water</Link>
+                <Link to={'/juice'}>Juice</Link>
             </div>
 
             <div>

@@ -6,14 +6,14 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 
-const ShopDetails = () => {
+const WaterDetails = () => {
     const teas = useLoaderData()
     const [teass, setTeas] = useState([])
 
    
 
     useEffect(() => {
-        fetch('http://localhost:5000/tea')
+        fetch('http://localhost:5000/water')
             .then(res => res.json())
             .then((data) => setTeas(data))
             // console.log(data);
@@ -117,7 +117,7 @@ const ShopDetails = () => {
                                 </p>
 
 
-                                <Link  to={`/shopDetails/${shop._id}`}  className="btn btn-outline w-full rounded-full border-blue-400">Add to Cart</Link>
+                                <Link  to={`/waterDetails/${shop._id}`}  className="btn btn-outline w-full rounded-full border-blue-400">Add to Cart</Link>
 
 
 
@@ -129,4 +129,4 @@ const ShopDetails = () => {
         </div>
     </div>;
 };
-export default ShopDetails;
+export default WaterDetails;

@@ -21,6 +21,7 @@ import Water from './Water/Water';
 import Juice from './Juice/Juice';
 import Drinks from './Drinks/Drinks';
 import Fruits from './Fruits & Vegetables/Fruits';
+import WaterDetails from './Water/WaterDetails';
 
 const router = createBrowserRouter([
   {
@@ -36,8 +37,9 @@ const router = createBrowserRouter([
         element: <Shop></Shop>
       },
       {
-        path: '/shopDetails',
-        element: <ShopDetails></ShopDetails>
+        path: '/shopDetails/:id',
+        element: <ShopDetails></ShopDetails>,
+        loader: ({ params }) => fetch(`http://localhost:5000/tea/${params.id}`)
       },
       {
         path: '/blogs',
@@ -59,6 +61,11 @@ const router = createBrowserRouter([
       {
         path:'/water',
         element:<Water></Water>
+      },
+      {
+        path: '/waterDetails/:id',
+        element: <WaterDetails></WaterDetails>,
+        loader: ({ params }) => fetch(`http://localhost:5000/water/${params.id}`)
       },
       {
         path:'/juice',
