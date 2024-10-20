@@ -1,6 +1,6 @@
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
-import { CreditCard, GitCompareArrows, Heart, ServerCrash, Share, Star } from "lucide-react";
+import { ChevronRight, CreditCard, GitCompareArrows, Heart, ServerCrash, Share, Star } from "lucide-react";
 import { useLoaderData } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -19,6 +19,16 @@ const DrinksDetails = () => {
         // console.log(data);
     }, []);
     return <div className="p-2">
+        <div className="space-x-5 flex my-6">
+            <Link to={'/'}>Home</Link>
+            <ChevronRight />
+            <Link to={'/beverages'}>Beverages</Link>
+            <ChevronRight />
+            <Link to={'/juice'}>Juice</Link>
+            <ChevronRight />
+            <Link to={''}>JuiceDetails</Link>
+
+        </div>
         <div className="flex justify-between items-center  mx-auto gap-6">
             <div className="w-2/3">
                 <Carousel>
@@ -111,7 +121,7 @@ const DrinksDetails = () => {
                                 </div>
                             </Link>
                             <div className="p-2">
-                                <Link  className="btn btn-outline w-full rounded-full border-blue-400">Add to Cart</Link>
+                                <Link className="btn btn-outline w-full rounded-full border-blue-400">Add to Cart</Link>
                             </div>
                         </div>
                     )
