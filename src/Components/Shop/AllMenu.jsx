@@ -1,9 +1,13 @@
 import { Dock, Logs } from "lucide-react";
-import { useEffect, useState } from "react";
-import { FaCartShopping } from "react-icons/fa6";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const AllMenu = () => {
+
+    const { user } = useContext(AuthContext);
+
     const [shops, setShops] = useState([]);
 
     useEffect(() => {
@@ -11,6 +15,41 @@ const AllMenu = () => {
             .then(res => res.json())
             .then(data => setShops(data));
     }, []);
+
+    const handlePost = (e, shop) => {
+        e.preventDefault();
+
+        const EmailName = user?.displayName;
+        const email = user?.email;
+        const photo = user?.photoURL;
+        const name = shop.name;
+        const currentTime = new Date();
+        const image = shop.image || "";
+        const description = shop.description;
+        const weight = shop.weight;
+        const price = shop.price;
+        const discount = shop.discount;
+
+        const newPost = { name, email, image, currentTime, photo, description, EmailName, weight, price, discount };
+        
+        fetch('http://localhost:5000/addCart', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(newPost)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.insertedId) {
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Item added to cart successfully',
+                    icon: 'success',
+                    confirmButtonText: 'Cool'
+                });
+                e.target.reset();
+            }
+        });
+    };
 
     return (
         <div className="my-6">
@@ -32,7 +71,7 @@ const AllMenu = () => {
                     <Logs className="cursor-pointer" />
                 </div>
             </div>
-            
+
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mt-10">
                 {shops.map((shop, index) => (
                     <div key={index} className="group relative bg-white border border-gray-200 rounded-lg shadow hover:shadow-lg overflow-hidden transition-shadow">
@@ -60,11 +99,11 @@ const AllMenu = () => {
                         </Link>
 
                         {/* Action Section */}
-                        <div className="flex justify-between items-center bg-gray-50 p-4 border-t">
-                            <button className="flex items-center space-x-2 w-full btn btn-outline rounded-full text-black hover:text-white transition-colors">
+                        <form onSubmit={(e) => handlePost(e, shop)} className="flex justify-between items-center bg-gray-50 p-4 border-t">
+                            <button type="submit" className="flex items-center space-x-2 w-full btn btn-outline rounded-full text-black hover:text-white transition-colors">
                                 Add to cart
                             </button>
-                        </div>
+                        </form>
                     </div>
                 ))}
             </div>

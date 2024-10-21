@@ -27,7 +27,6 @@ const ShopDetails = () => {
             <Link to={'/water'}>Water</Link>
             <ChevronRight />
             <Link to={''}>WaterDetails</Link>
-
         </div>
         <div className="flex justify-between items-center  mx-auto gap-6">
             <div className="w-2/3">

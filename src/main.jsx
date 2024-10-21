@@ -25,6 +25,7 @@ import JuiceDetails from './Juice/JuiceDetails';
 import DrinksDetails from './Drinks/DrinksDetails';
 import TeaDetails from './Tea/TeaDetails';
 import ShopDetails from './Components/Shop/ShopDetails';
+import MyCart from './Components/Cart/MyCart';
 
 const router = createBrowserRouter([
   {
@@ -44,7 +45,7 @@ const router = createBrowserRouter([
         element: <ShopDetails></ShopDetails>,
         loader: ({ params }) => fetch(`http://localhost:5000/shop/${params.id}`)
       },
-     
+
       {
         path: '/blogs',
         element: <Blogs></Blogs>,
@@ -96,6 +97,10 @@ const router = createBrowserRouter([
       {
         path: '/fruits',
         element: <Fruits></Fruits>
+      },
+      {
+        path: '/myCart',
+        element: <MyCart></MyCart>
       }
 
     ]
@@ -113,7 +118,7 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthProvider>
-      <RouterProvider router={router} />
+        <RouterProvider router={router} />
     </AuthProvider>
   </StrictMode>,
 )

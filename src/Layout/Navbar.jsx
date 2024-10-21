@@ -1,8 +1,9 @@
 import { Heart, LogOut, MapPin } from "lucide-react";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import axios from "axios";
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext)
@@ -14,6 +15,17 @@ const Navbar = () => {
             .catch(error => console.error(error))
 
     }
+
+
+    const [items, setItems] = useState([])
+
+    
+    useEffect(() => {
+        axios(`http://localhost:5000/addCart/${user?.email}`)
+            .then(res => {
+                setItems(res.data)
+            })
+    }, [user])
 
     return <div>
         <div className="navbar bg-base-100 py-6  border-2">
@@ -140,13 +152,12 @@ const Navbar = () => {
                             <span className="badge badge-sm bg-red-500 text-white rounded-full indicator-item">8</span>
                         </div>
                     </div>
-                    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
-                        <div className="indicator">
-                            {/* <img src="/Vector (1).png" alt="" /> */}
-                            <FaShoppingCart className="size-8" />
-                            <span className="badge badge-sm bg-red-500 text-white rounded-full indicator-item">8</span>
-                        </div>
-                    </div>
+                    <Link to={'/myCart'} tabIndex={0} role="button" className="btn btn-ghost btn-circle">
+                            <div className="indicator">
+                                <FaShoppingCart className="size-8" />
+                                <span className="badge badge-sm bg-red-500 text-white rounded-full indicator-item">{items.length}</span>
+                            </div>
+                    </Link>
                 </div>
             </div>
         </div>
