@@ -9,7 +9,6 @@ import {
 import Main from './Layout/Main';
 import Home from './Components/Home/Home';
 import Shop from './Components/Shop/Shop';
-import ShopDetails from './Components/Shop/ShopDetails';
 import Login from './Components/Home/Login';
 import Register from './Components/Home/Register';
 import AuthProvider from './AuthProvider/AuthProvider';
@@ -24,6 +23,8 @@ import Fruits from './Fruits & Vegetables/Fruits';
 import WaterDetails from './Water/WaterDetails';
 import JuiceDetails from './Juice/JuiceDetails';
 import DrinksDetails from './Drinks/DrinksDetails';
+import TeaDetails from './Tea/TeaDetails';
+import ShopDetails from './Components/Shop/ShopDetails';
 
 const router = createBrowserRouter([
   {
@@ -41,8 +42,9 @@ const router = createBrowserRouter([
       {
         path: '/shopDetails/:id',
         element: <ShopDetails></ShopDetails>,
-        loader: ({ params }) => fetch(`http://localhost:5000/tea/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/shop/${params.id}`)
       },
+     
       {
         path: '/blogs',
         element: <Blogs></Blogs>,
@@ -58,7 +60,11 @@ const router = createBrowserRouter([
       {
         path: '/tea',
         element: <Tea></Tea>,
-        // : () => fetch('http://localhost:3000/tea')
+      },
+      {
+        path: '/teaDetails/:id',
+        element: <TeaDetails></TeaDetails>,
+        loader: ({ params }) => fetch(`http://localhost:5000/tea/${params.id}`)
       },
       {
         path: '/water',

@@ -1,52 +1,17 @@
 import { ArrowRight } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Arrivals = () => {
 
-    const shops = [
-        {
-            image: '/Link → 1-2-500x500.jpg (1).png',
-            title: '100 Percent Apple Juice – 64fl oz Bottle',
-            discount: '70%',
-            price: 50,
-            offer: 1.99
-        },
-        {
-            image: '/Link → 1-12-500x500.jpg.png',
-            title: 'Great Value Rising CrustFrozen Pizza',
-            discount: '20%',
-            price: 30,
-            offer: 3.55
-        },
-        {
-            image: '/Link → 1-30-500x500.jpg.png',
-            title: 'Simply Orange Pulp Free Juice– 52 fl oz',
-            discount: '40%',
-            price: 7.45,
-            offer: 2.99
-        },
-        {
-            image: '/Link → 1-30-500x500.jpg.png',
-            title: 'California Pizza KitchenMargherita, Crispy ',
-            discount: '20%',
-            price: 8.45,
-            offer: 5.99
-        },
-        {
-            image: '/Link → 1-500x500.jpg.png',
-            title: 'Cantaloupe Melon FreshOrganic Cut',
-            discount: '20%',
-            price: 90.45,
-            offer: 3.99
-        },
-        {
-            image: '/Link → 1-9-500x500.jpg.png',
-            title: 'Angel Soft Toilet Paper, 9Mega Rolls',
-            discount: '20%',
-            price: 90.45,
-            offer: 3.99
-        },
-    ]
+    const [shops, setShops] = useState([])
 
+    useEffect(() => {
+        fetch('http://localhost:5000/shop')
+            .then(res => res.json())
+            .then(data => setShops(data))
+        // console.log(data);
+    }, [])
     return <div className="p-4 mt-16">
         <div className="flex justify-between items-center">
             <div className="flex items-center gap-7">
@@ -61,40 +26,43 @@ const Arrivals = () => {
             {
                 shops.map((shop, index) =>
                     <div key={index} className="group relative block overflow-hidden border-2 ">
-                        <button
-                            className="absolute start-4 top-4 z-10 rounded-full  text-gray-900 transition hover:text-gray-900/75"
-                        >
-                            <span className="sr-only">Wishlist</span>
-                            <p className="bg-red-500 px-3 py-1 rounded-full text-white font-medium">{shop.discount}</p>
-                        </button>
+                        <Link to={`/shopDetails/${shop._id}`}>
+                            <button
+                                className="absolute start-4 top-4 z-10 rounded-full  text-gray-900 transition hover:text-gray-900/75"
+                            >
+                                <span className="sr-only">Wishlist</span>
+                                <p className="bg-red-500 px-3 py-1 rounded-full text-white font-medium">{shop.discount}</p>
+                            </button>
 
-                        <img
-                            src={shop.image}
-                            alt=""
-                            className="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
-                        />
+                            <img
+                                src={shop.image}
+                                alt=""
+                                className="h-64 w-full object-cover transition duration-500 group-hover:scale-150 sm:h-72"
+                            />
 
-                        <div className="relative border border-gray-100 bg-white space-y-3 p-4">
-                            <img src="/span.badge.png" alt="" />
-
-
-                            <h3 className="mt-1.5 text-lg font-medium text-gray-900">{shop.title}</h3>
+                            <div className="relative border border-gray-100 bg-white space-y-3 p-4">
+                                <img src="/span.badge.png" alt="" />
 
 
-                            <p className="text-orange-400 text-3xl font-semibold ">
-                                ${shop.price}
-                                <span className="text-black pl-3 text-xl line-through">${shop.offer}</span>
-                            </p>
-
-                            <form className="mt-4 flex gap-4">
-                                <button
-                                    className="block w-full  bg-gray-100 px-4 py-3 text-sm font-medium text-gray-900 transition hover:scale-105      border-2 border-blue-400 rounded-full"
-                                >
-                                    Add to Cart
-                                </button>
+                                <h3 className="mt-1.5 text-lg font-medium text-gray-900">{shop.name}</h3>
 
 
-                            </form>
+                                <p className="text-orange-400 text-3xl font-semibold ">
+                                    ${shop.price}
+                                    <span className="text-black pl-3 text-xl line-through">${shop.discount}</span>
+                                </p>
+
+
+
+                            </div>
+                        </Link>
+
+                        <div className="p-2">
+                            <button
+                                className="block w-full  bg-gray-100 px-4 py-3 text-sm font-medium text-gray-900 transition hover:scale-105      border-2 border-blue-400 rounded-full"
+                            >
+                                Add to Cart
+                            </button>
                         </div>
                     </div>
                 )

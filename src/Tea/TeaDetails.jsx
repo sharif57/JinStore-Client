@@ -1,34 +1,24 @@
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
-import { ChevronRight, CreditCard, GitCompareArrows, Heart, ServerCrash, Share, Star } from "lucide-react";
+import { CreditCard, GitCompareArrows, Heart, ServerCrash, Share, Star } from "lucide-react";
 import { useLoaderData } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 
-const ShopDetails = () => {
+const TeaDetails = () => {
     const teas = useLoaderData()
     const [teass, setTeas] = useState([])
 
-
+   
 
     useEffect(() => {
-        fetch('http://localhost:5000/shop')
+        fetch('http://localhost:5000/tea')
             .then(res => res.json())
             .then((data) => setTeas(data))
-        // console.log(data);
+            // console.log(data);
     }, []);
     return <div className="p-2">
-        <div className="space-x-5 flex my-6">
-            <Link to={'/'}>Home</Link>
-            <ChevronRight />
-            <Link to={'/beverages'}>Beverages</Link>
-            <ChevronRight />
-            <Link to={'/water'}>Water</Link>
-            <ChevronRight />
-            <Link to={''}>WaterDetails</Link>
-
-        </div>
         <div className="flex justify-between items-center  mx-auto gap-6">
             <div className="w-2/3">
                 <Carousel>
@@ -92,38 +82,45 @@ const ShopDetails = () => {
         <div className="mt-14">
             <h1 className="text-3xl font-semibold">Related products</h1>
             <div className="grid grid-cols-1 lg:grid-cols-6 mt-10  mb-10  ">
-                {
-                    teass.slice(0, 6).map((shop, index) =>
+            {
+                    teass.slice(0,6).map((shop, index) =>
                         <div key={index} className="group relative block overflow-hidden border-2 rounded-lg">
-                            <Link to={`/shopDetails/${shop._id}`}>
-                                <button
-                                    className="absolute start-4 top-4 z-10 rounded-full  text-gray-900 transition hover:text-gray-900/75"
-                                >
-                                    <span className="sr-only">Wishlist</span>
-                                    <p className="bg-red-500 px-3 py-1 rounded-full text-white font-medium">{shop.discount}%</p>
-                                </button>
+                            <button
+                                className="absolute start-4 top-4 z-10 rounded-full  text-gray-900 transition hover:text-gray-900/75"
+                            >
+                                <span className="sr-only">Wishlist</span>
+                                <p className="bg-red-500 px-3 py-1 rounded-full text-white font-medium">{shop.discount}%</p>
+                            </button>
 
-                                <img
-                                    src={shop.image}
-                                    alt=""
-                                    className="h-64 w-full object-cover transition duration-500 group-hover:scale-150 sm:h-72"
-                                />
+                            <img
+                                src={shop.image}
+                                alt=""
+                                className="h-64 w-full object-cover transition duration-500 group-hover:scale-150 sm:h-72"
+                            />
 
 
-                                <div className="relative border border-gray-100 bg-white space-y-3 p-4">
-                                    <div className="flex justify-between">
-                                        <img src="/span.badge.png" alt="" />
-                                        <p className="text-xs p-2 bg-orange-200 rounded-full text-black font-medium ">In Stock</p>
-                                    </div>
-                                    <h3 className="mt-1.5 text-lg font-medium text-gray-900 ">{shop.name.slice(0, 18)}...</h3>
-                                    <p className="text-orange-400 text-3xl font-semibold ">
-                                        ${shop.price}
-                                        <span className="text-black pl-3 text-xl line-through">${shop.discount}</span>
-                                    </p>
+                            <div className="relative border border-gray-100 bg-white space-y-3 p-4">
+                                <div className="flex justify-between">
+                                    <img src="/span.badge.png" alt="" />
+                                    <p className="text-xs p-2 bg-orange-200 rounded-full text-black font-medium ">In Stock</p>
                                 </div>
-                            </Link>
-                            <div className="p-2">
-                                <Link className="btn btn-outline w-full rounded-full border-blue-400">Add to Cart</Link>
+
+
+
+                                <h3 className="mt-1.5 text-lg font-medium text-gray-900 ">{shop.name.slice(0,18)}...</h3>
+
+
+
+                                <p className="text-orange-400 text-3xl font-semibold ">
+                                    ${shop.price}
+                                    <span className="text-black pl-3 text-xl line-through">${shop.discount}</span>
+                                </p>
+
+
+                                <Link  to={`/shopDetails/${shop._id}`}  className="btn btn-outline w-full rounded-full border-blue-400">Add to Cart</Link>
+
+
+
                             </div>
                         </div>
                     )
@@ -132,4 +129,4 @@ const ShopDetails = () => {
         </div>
     </div>;
 };
-export default ShopDetails;
+export default TeaDetails;

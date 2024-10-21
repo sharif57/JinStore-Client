@@ -1,53 +1,17 @@
 import { ArrowRight, Heart, Star } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const Featured = () => {
 
+    const [teas, setTeas] = useState([])
 
+    useEffect(() => {
+        fetch('http://localhost:5000/water')
+            .then(res => res.json())
+            .then(data => setTeas(data))
+        // console.log(data);
+    }, [])
 
-    const shops = [
-        {
-            image: '/Link → 1-2-500x500.jpg (1).png',
-            title: '100 Percent Apple Juice – 64fl oz Bottle',
-            discount: '70%',
-            price: 50,
-            offer: 1.99
-        },
-        {
-            image: '/Link → 1-12-500x500.jpg.png',
-            title: 'Great Value Rising CrustFrozen Pizza',
-            discount: '20%',
-            price: 30,
-            offer: 3.55
-        },
-        {
-            image: '/Link → 1-30-500x500.jpg.png',
-            title: 'Simply Orange Pulp Free Juice– 52 fl oz',
-            discount: '40%',
-            price: 7.45,
-            offer: 2.99
-        },
-        {
-            image: '/Link → 1-30-500x500.jpg.png',
-            title: 'California Pizza KitchenMargherita, Crispy ',
-            discount: '20%',
-            price: 8.45,
-            offer: 5.99
-        },
-        {
-            image: '/Link → 1-500x500.jpg.png',
-            title: 'Cantaloupe Melon FreshOrganic Cut',
-            discount: '20%',
-            price: 90.45,
-            offer: 3.99
-        },
-        {
-            image: '/Link → 1-9-500x500.jpg.png',
-            title: 'Angel Soft Toilet Paper, 9Mega Rolls',
-            discount: '20%',
-            price: 90.45,
-            offer: 3.99
-        },
-    ]
 
     return <div className="p-2">
         <div className="flex justify-between items-center space-y-5 mt-7">
@@ -61,7 +25,7 @@ const Featured = () => {
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-7">
             {
-                shops.map((shop, index) =>
+                teas.slice(0,6).map((shop, index) =>
                     <div key={index} className="group relative block overflow-hidden border-2 flex gap-6  ">
                         <div>
                             <button
@@ -86,18 +50,18 @@ const Featured = () => {
                             <img src="/span.badge.png" alt="" />
 
 
-                            <h3 className="mt-1.5 text-lg font-medium text-gray-900">{shop.title}</h3>
+                            <h3 className="mt-1.5 text-lg font-medium text-gray-900">{shop.name}</h3>
 
 
                             <p className="text-orange-400 text-3xl font-semibold ">
                                 ${shop.price}
-                                <span className="text-black pl-3 text-xl line-through">${shop.offer}</span>
+                                <span className="text-black pl-3 text-xl line-through">${shop.discount}</span>
                             </p>
                             <div className="flex gap-1">
-                            <Star />
-                            <Star />
-                            <Star />
-                            <Star />
+                                <Star />
+                                <Star />
+                                <Star />
+                                <Star />
                             </div>
 
                             <form className="mt-4 flex gap-4">

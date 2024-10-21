@@ -54,7 +54,7 @@ const Tea = () => {
                                         <span className="text-black pl-3 text-xl line-through">${shop.discount}</span>
                                     </p>
 
-                                    <Link to={`/shopDetails/${shop._id}`} className="btn btn-outline w-full rounded-full border-blue-400">Add to Cart</Link>
+                                    <Link to={`/teaDetails/${shop._id}`} className="btn btn-outline w-full rounded-full border-blue-400">Add to Cart</Link>
                                 </div>
                             </div>
                         </div>
