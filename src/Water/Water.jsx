@@ -1,12 +1,12 @@
 import { ChevronRight } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Water = () => {
 
     const [teas, setTeas] = useState([])
 
-    useState(() => {
+    useEffect(() => {
         fetch('http://localhost:5000/water')
             .then(res => res.json())
             .then(data => setTeas(data))

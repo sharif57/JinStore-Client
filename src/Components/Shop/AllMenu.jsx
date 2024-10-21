@@ -1,52 +1,17 @@
-import { Dock, Logs, ShoppingCart } from "lucide-react";
+import { Dock, Logs } from "lucide-react";
+import { useEffect, useState } from "react";
 import { FaCartShopping } from "react-icons/fa6";
 
 const AllMenu = () => {
 
-    const shops = [
-        {
-            image: '/Link → 1-2-500x500.jpg (1).png',
-            title: '100 Percent Apple Juice – 64fl oz Bottle',
-            discount: '70%',
-            price: 50,
-            offer: 1.99
-        },
-        {
-            image: '/Link → 1-12-500x500.jpg.png',
-            title: 'Great Value Rising CrustFrozen Pizza',
-            discount: '20%',
-            price: 30,
-            offer: 3.55
-        },
-        {
-            image: '/Link → 1-30-500x500.jpg.png',
-            title: 'Simply Orange Pulp Free Juice– 52 fl oz',
-            discount: '40%',
-            price: 7.45,
-            offer: 2.99
-        },
-        {
-            image: '/Link → 1-30-500x500.jpg.png',
-            title: 'California Pizza KitchenMargherita, Crispy ',
-            discount: '20%',
-            price: 8.45,
-            offer: 5.99
-        },
-        {
-            image: '/Link → 1-500x500.jpg.png',
-            title: 'Cantaloupe Melon FreshOrganic Cut',
-            discount: '20%',
-            price: 90.45,
-            offer: 3.99
-        },
-        {
-            image: '/Link → 1-9-500x500.jpg.png',
-            title: 'Angel Soft Toilet Paper, 9Mega Rolls',
-            discount: '20%',
-            price: 90.45,
-            offer: 3.99
-        },
-    ]
+    const [shops, setShops] = useState([])
+
+    useEffect(() => {
+        fetch('http://localhost:5000/shop')
+            .then(res => res.json())
+            .then(data => setShops(data))
+        // console.log(data);
+    }, [])
 
     return <div className="my-6">
         <div className="bg-slate-200 p-6 flex justify-between items-center">
@@ -93,10 +58,10 @@ const AllMenu = () => {
 
                             <p className="text-orange-400 text-3xl font-semibold ">
                                 ${shop.price}
-                                <span className="text-black pl-3 text-xl line-through">${shop.offer}</span>
+                                <span className="text-black pl-3 text-xl line-through">${shop.discount}</span>
                             </p>
 
-                            <div  className="flex justify-between items-center mt-8">
+                            <div className="flex justify-between items-center mt-8">
                                 <FaCartShopping className="size-10 cursor-pointer " />
                                 <p className="text-xl font-semibold text-green-500">In Stock</p>
                             </div>
