@@ -19,7 +19,7 @@ const Navbar = () => {
 
     const [items, setItems] = useState([])
 
-    
+
     useEffect(() => {
         axios(`http://localhost:5000/addCart/${user?.email}`)
             .then(res => {
@@ -153,10 +153,10 @@ const Navbar = () => {
                         </div>
                     </div>
                     <Link to={'/myCart'} tabIndex={0} role="button" className="btn btn-ghost btn-circle">
-                            <div className="indicator">
-                                <FaShoppingCart className="size-8" />
-                                <span className="badge badge-sm bg-red-500 text-white rounded-full indicator-item">{items.length}</span>
-                            </div>
+                        <div className="indicator">
+                            <FaShoppingCart className="size-8" />
+                            <span className="badge badge-sm bg-red-500 text-white rounded-full indicator-item">{items.length}</span>
+                        </div>
                     </Link>
                 </div>
             </div>
@@ -181,11 +181,13 @@ const Navbar = () => {
             <div className="flex-none">
                 <div className="dropdown dropdown-end">
                     <div className="indicator">
-                        <ul className="flex gap-5 font-medium text-xl">
+                        <ul className="flex gap-5 ">
                             <Link to={'/work'}>
                                 <li>How it works</li>
                             </Link>
-                            <li>Almost Finished</li>
+                            <Link to={'/topSelling'}>
+                                <li>Trending Products</li>
+                            </Link>
                         </ul>
                     </div>
 

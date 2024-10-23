@@ -26,6 +26,7 @@ import DrinksDetails from './Drinks/DrinksDetails';
 import TeaDetails from './Tea/TeaDetails';
 import ShopDetails from './Components/Shop/ShopDetails';
 import MyCart from './Components/Cart/MyCart';
+import Trending from './Trending/Trending';
 
 const router = createBrowserRouter([
   {
@@ -101,6 +102,10 @@ const router = createBrowserRouter([
       {
         path: '/myCart',
         element: <MyCart></MyCart>
+      },
+      {
+        path:'/topSelling',
+        element:<Trending></Trending>
       }
 
     ]
