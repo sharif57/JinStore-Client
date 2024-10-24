@@ -55,7 +55,7 @@ const Fruits = () => {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
             {shops.map((shop, index) => (
                 <div key={index} className="group relative block overflow-hidden border-2 rounded-lg">
-                    <Link to={`/juiceDetails/${shop._id}`}>
+                    <Link to={`/fruitsDetails/${shop._id}`}>
                         <button
                             className="absolute start-4 top-4 z-10 rounded-full text-gray-900 transition hover:text-gray-900/75"
                         >

@@ -27,6 +27,7 @@ import TeaDetails from './Tea/TeaDetails';
 import ShopDetails from './Components/Shop/ShopDetails';
 import MyCart from './Components/Cart/MyCart';
 import Trending from './Trending/Trending';
+import FruitsDetails from './Fruits & Vegetables/FruitsDetails';
 
 const router = createBrowserRouter([
   {
@@ -98,6 +99,11 @@ const router = createBrowserRouter([
       {
         path: '/fruits',
         element: <Fruits></Fruits>
+      },
+      {
+        path: '/fruitsDetails/:id',
+        element: <FruitsDetails></FruitsDetails>,
+        loader: ({ params }) => fetch(`http://localhost:5000/fruits/${params.id}`)
       },
       {
         path: '/myCart',

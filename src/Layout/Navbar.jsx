@@ -182,11 +182,11 @@ const Navbar = () => {
                 <div className="dropdown dropdown-end">
                     <div className="indicator">
                         <ul className="flex gap-5 ">
-                            <Link to={'/work'}>
-                                <li>How it works</li>
-                            </Link>
                             <Link to={'/topSelling'}>
                                 <li>Trending Products</li>
+                            </Link>
+                            <Link to={'/work'}>
+                                <li>How it works</li>
                             </Link>
                         </ul>
                     </div>

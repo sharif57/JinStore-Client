@@ -12,6 +12,9 @@ const Arrivals = () => {
             .then(data => setShops(data))
         // console.log(data);
     }, [])
+
+    
+
     return <div className="p-4 mt-16">
         <div className="flex justify-between items-center">
             <div className="flex items-center gap-7">
