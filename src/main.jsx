@@ -28,6 +28,7 @@ import ShopDetails from './Components/Shop/ShopDetails';
 import MyCart from './Components/Cart/MyCart';
 import Trending from './Trending/Trending';
 import FruitsDetails from './Fruits & Vegetables/FruitsDetails';
+import MyLocationMap from './Components/Home/MyLocationMap';
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       {
         path: '/shop',
         element: <Shop></Shop>
+      },
+      {
+        path:'/map',
+        element:<MyLocationMap></MyLocationMap>
       },
       {
         path: '/shopDetails/:id',

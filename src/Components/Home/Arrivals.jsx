@@ -1,8 +1,12 @@
 import { ArrowRight } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Arrivals = () => {
+
+    const {user} = useContext(AuthContext)
 
     const [shops, setShops] = useState([])
 
@@ -13,7 +17,41 @@ const Arrivals = () => {
         // console.log(data);
     }, [])
 
-    
+    const handlePost = (e, shop) => {
+        e.preventDefault();
+
+        const EmailName = user?.displayName;
+        const email = user?.email;
+        const photo = user?.photoURL;
+        const name = shop.name;
+        const currentTime = new Date();
+        const image = shop.image || "";
+        const description = shop.description;
+        const weight = shop.weight;
+        const price = shop.price;
+        const discount = shop.discount;
+
+        const newPost = { name, email, image, currentTime, photo, description, EmailName, weight, price, discount };
+
+        fetch('http://localhost:5000/addCart', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(newPost)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Item added to cart successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
+                    });
+                    e.target.reset();
+                }
+            });
+    };
+
 
     return <div className="p-4 mt-16">
         <div className="flex justify-between items-center">
@@ -25,7 +63,7 @@ const Arrivals = () => {
                 View All <ArrowRight></ArrowRight>
             </button>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-6 mt-10    ">
+        <div className="grid grid-cols-1 lg:grid-cols-6 gap-2 mt-10    ">
             {
                 shops.map((shop, index) =>
                     <div key={index} className="group relative block overflow-hidden border-2 ">
@@ -60,13 +98,14 @@ const Arrivals = () => {
                             </div>
                         </Link>
 
-                        <div className="p-2">
-                            <button
-                                className="block w-full  bg-gray-100 px-4 py-3 text-sm font-medium text-gray-900 transition hover:scale-105      border-2 border-blue-400 rounded-full"
-                            >
-                                Add to Cart
-                            </button>
-                        </div>
+                        <form onSubmit={(e) => handlePost(e, shop)}  className="p-2">
+                             <button
+                                    type="submit"
+                                    className="btn btn-outline w-full rounded-full border-blue-400"
+                                >
+                                    Add to Cart
+                                </button>
+                        </form>
                     </div>
                 )
             }

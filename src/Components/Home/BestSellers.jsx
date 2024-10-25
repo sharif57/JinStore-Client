@@ -203,7 +203,7 @@ const BestSellers = () => {
 
             {/* Promo Section */}
             <div
-                className="w-full h-24 bg-right-bottom bg-red-50 bg-no-repeat bg-end p-2 rounded-lg"
+                className="w-full bg-right-bottom bg-red-50 bg-no-repeat bg-end p-2 pt-5 pb-5 rounded-lg"
                 style={{ backgroundImage: `url('/promo.png.png')` }}
             >
                 <div className="pl-7">
