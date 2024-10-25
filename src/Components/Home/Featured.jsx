@@ -1,7 +1,12 @@
 import { ArrowRight, Heart, Star } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Featured = () => {
+
+    const { user } = useContext(AuthContext)
 
     const [teas, setTeas] = useState([])
     const [juices, setJuices] = useState([])
@@ -21,6 +26,42 @@ const Featured = () => {
     }, [])
 
 
+    const handlePost = (e, shop) => {
+        e.preventDefault();
+
+        const EmailName = user?.displayName;
+        const email = user?.email;
+        const photo = user?.photoURL;
+        const name = shop.name;
+        const currentTime = new Date();
+        const image = shop.image || "";
+        const description = shop.description;
+        const weight = shop.weight;
+        const price = shop.price;
+        const discount = shop.discount;
+
+        const newPost = { name, email, image, currentTime, photo, description, EmailName, weight, price, discount };
+
+        fetch('http://localhost:5000/addCart', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(newPost)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Item added to cart successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
+                    });
+                    e.target.reset();
+                }
+            });
+    };
+
+
     return <div className="p-2">
         <div className="flex justify-between items-center space-y-5 mt-7">
             <div className="flex items-center gap-7">
@@ -35,7 +76,7 @@ const Featured = () => {
             {
                 teas.slice(0, 3).map((shop, index) =>
                     <div key={index} className="group relative block overflow-hidden border-2 flex gap-6  ">
-                        <div>
+                        <Link to={`/waterDetails/${shop._id}`}>
                             <button
                                 className="absolute start-4 top-4 z-10 rounded-full  text-gray-900 transition hover:text-gray-900/75"
                             >
@@ -50,9 +91,9 @@ const Featured = () => {
                             <img
                                 src={shop.image}
                                 alt=""
-                                className="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
+                                className="h-64 w-72 object-cover transition duration-500 group-hover:scale-150 sm:h-72"
                             />
-                        </div>
+                        </Link>
 
                         <div className="relative border border-gray-100 bg-white space-y-3 p-4">
                             <img src="/span.badge.png" alt="" />
@@ -66,15 +107,16 @@ const Featured = () => {
                                 <span className="text-black pl-3 text-xl line-through">${shop.discount}</span>
                             </p>
                             <div className="flex gap-1">
+                                {/* <Star />
                                 <Star />
                                 <Star />
-                                <Star />
-                                <Star />
+                                <Star /> */}
                             </div>
 
-                            <form className="mt-4 flex gap-4">
+                            <form onSubmit={(e) => handlePost(e, shop)} className="mt-4 flex gap-4">
                                 <button
-                                    className="block w-full  bg-gray-100 px-4 py-3 text-sm font-medium text-gray-900 transition hover:scale-105      border-2 border-blue-400 rounded-full"
+                                    type="submit"
+                                    className="btn btn-outline w-full rounded-full border-blue-400"
                                 >
                                     Add to Cart
                                 </button>
@@ -90,7 +132,7 @@ const Featured = () => {
             {
                 juices.slice(0, 3).map((shop, index) =>
                     <div key={index} className="group relative block overflow-hidden border-2 flex gap-6  ">
-                        <div>
+                        <Link to={`/juiceDetails/${shop._id}`}>
                             <button
                                 className="absolute start-4 top-4 z-10 rounded-full  text-gray-900 transition hover:text-gray-900/75"
                             >
@@ -105,9 +147,9 @@ const Featured = () => {
                             <img
                                 src={shop.image}
                                 alt=""
-                                className="h-64 w-72 object-cover transition duration-500 group-hover:scale-105 sm:h-72"
+                                className="h-64 w-72 object-cover transition duration-500 group-hover:scale-150 sm:h-72"
                             />
-                        </div>
+                        </Link>
 
                         <div className="relative border border-gray-100 bg-white space-y-3 p-4">
                             <img src="/span.badge.png" alt="" />
@@ -121,15 +163,16 @@ const Featured = () => {
                                 <span className="text-black pl-3 text-xl line-through">${shop.discount}</span>
                             </p>
                             <div className="flex gap-1">
+                                {/* <Star />
                                 <Star />
                                 <Star />
-                                <Star />
-                                <Star />
+                                <Star /> */}
                             </div>
 
-                            <form className="mt-4 flex gap-4">
+                            <form onSubmit={(e) => handlePost(e, shop)} className="mt-4 flex gap-4">
                                 <button
-                                    className="block w-full  bg-gray-100 px-4 py-3 text-sm font-medium text-gray-900 transition hover:scale-105      border-2 border-blue-400 rounded-full"
+                                    type="submit"
+                                    className="btn btn-outline w-full rounded-full border-blue-400"
                                 >
                                     Add to Cart
                                 </button>
