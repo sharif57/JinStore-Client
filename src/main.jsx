@@ -29,6 +29,8 @@ import MyCart from './Components/Cart/MyCart';
 import Trending from './Trending/Trending';
 import FruitsDetails from './Fruits & Vegetables/FruitsDetails';
 import MyLocationMap from './Components/Home/MyLocationMap';
+import Payment from './Components/CheckOut/Payment';
+import { CartProvider } from './Components/Cart/CartContext';
 
 const router = createBrowserRouter([
   {
@@ -44,8 +46,8 @@ const router = createBrowserRouter([
         element: <Shop></Shop>
       },
       {
-        path:'/map',
-        element:<MyLocationMap></MyLocationMap>
+        path: '/map',
+        element: <MyLocationMap></MyLocationMap>
       },
       {
         path: '/shopDetails/:id',
@@ -115,8 +117,11 @@ const router = createBrowserRouter([
         element: <MyCart></MyCart>
       },
       {
-        path:'/topSelling',
-        element:<Trending></Trending>
+        path: '/topSelling',
+        element: <Trending></Trending>
+      }, {
+        path: '/checkOut',
+        element: <Payment></Payment>
       }
 
     ]
@@ -134,7 +139,9 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthProvider>
+      <CartProvider>
         <RouterProvider router={router} />
+      </CartProvider>
     </AuthProvider>
   </StrictMode>,
 )

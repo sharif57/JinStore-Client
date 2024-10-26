@@ -130,7 +130,7 @@ const Featured = () => {
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-7">
             {
-                juices.slice(0, 3).map((shop, index) =>
+                juices.slice(4, 7).map((shop, index) =>
                     <div key={index} className="group relative block overflow-hidden border-2 flex gap-6  ">
                         <Link to={`/juiceDetails/${shop._id}`}>
                             <button
