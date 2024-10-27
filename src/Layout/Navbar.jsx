@@ -3,29 +3,34 @@ import { useContext, useEffect, useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
-import axios from "axios";
+import { useCart } from "../Components/CheckOut/CartContext";
+
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext)
     console.log(user?.displayName);
 
+    const { items } = useCart();
+    console.log(items);
+
     const handleLogOut = () => {
         logOut()
             .then(() => console.log('logout successfully'))
             .catch(error => console.error(error))
-
     }
 
 
-    const [items, setItems] = useState([])
+    // const [items, setItems] = useState([])
 
 
-    useEffect(() => {
-        axios(`http://localhost:5000/addCart/${user?.email}`)
-            .then(res => {
-                setItems(res.data)
-            })
-    }, [user])
+    // useEffect(() => {
+    //     fetch(`http://localhost:5000/addCart/${user?.email}`)
+    //         .then(res => res.json())
+    //         .then(data => setItems(data))
+    // }, [user])
+    
+
+
 
     return <div className="bg-gradient-to-r from-[#f4f1bc] via-[#6b7280] to-[#a8a29e] fixed top-0 w-full z-30 ">
 
@@ -156,10 +161,12 @@ const Navbar = () => {
                                 <span className="badge badge-sm bg-red-500 text-white rounded-full indicator-item">8</span>
                             </div>
                         </div>
-                        <Link to={'/myCart'} tabIndex={0} role="button" className="btn btn-ghost btn-circle">
+                        <Link to="/myCart" tabIndex={0} role="button" className="btn btn-ghost btn-circle">
                             <div className="indicator">
                                 <FaShoppingCart className="size-8" />
-                                <span className="badge badge-sm bg-red-500 text-white rounded-full indicator-item">{items.length}</span>
+                                <span className="badge badge-sm bg-red-500 text-white rounded-full indicator-item">
+                                    {items.length} {/* Display the number of items in the cart */}
+                                </span>
                             </div>
                         </Link>
                     </div>

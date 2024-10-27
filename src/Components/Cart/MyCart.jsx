@@ -191,10 +191,8 @@
 
 // export default MyCart;
 
-
-
 import { Link } from "react-router-dom";
-import { useCart } from "./CartContext";
+import { useCart } from "../CheckOut/CartContext";
 
 const MyCart = () => {
     const { items, subtotal, totalDiscount, total, handleDelete } = useCart();
@@ -249,4 +247,4 @@ const MyCart = () => {
     );
 };
 
-export default MyCart;
+export default MyCart; 

@@ -12,7 +12,7 @@
   "dependencies": {
     "@stripe/react-stripe-js": "^2.7.1",
     "@stripe/stripe-js": "^3.5.0",
-    "@tanstack/react-query": "^5.59.15",
+    "@tanstack/react-query": "^5.59.16",
     "axios": "^1.7.7",
     "firebase": "^10.14.1",
     "google-maps-current-location": "^0.4.0",
