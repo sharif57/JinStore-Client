@@ -68,7 +68,7 @@
 
 /* eslint-disable react/prop-types */
 import { createContext, useContext } from "react";
-import { useQuery } from "@tanstack/react-query"; // Import TanStack Query hooks
+import { useQuery } from "@tanstack/react-query"; 
 import axios from "axios";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
@@ -86,11 +86,10 @@ const fetchCartItems = async (email) => {
 export const CartProvider = ({ children }) => {
     const { user } = useContext(AuthContext);
 
-    // Use TanStack Query to fetch cart items
     const { data: items = [], refetch } = useQuery({
         queryKey: ['cartItems', user?.email], 
         queryFn: () => fetchCartItems(user?.email), 
-        enabled: !!user?.email // Only fetch if user is logged in
+        enabled: !!user?.email 
     });
 
     // Calculate subtotal, total discount, and total
