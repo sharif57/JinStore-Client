@@ -52,7 +52,7 @@ const Fruits = () => {
 
 
     return <div>
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 mt-[50px]">
             {shops.map((shop, index) => (
                 <div key={index} className="group relative block overflow-hidden border-2 rounded-lg">
                     <Link to={`/fruitsDetails/${shop._id}`}>

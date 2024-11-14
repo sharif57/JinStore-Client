@@ -2,7 +2,7 @@ import { ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Beverages = () => {
-    return <div className="p-2">
+    return <div className="p-2 mt-10">
         <div className="space-x-5 flex">
             <Link to={'/'}>Home</Link>
             <ChevronRight />
@@ -72,7 +72,7 @@ const Beverages = () => {
                             className="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100"
                         >
                             <p className="text-sm text-white">
-                            Juice is a natural liquid extracted from fruits or vegetables, often enjoyed for its refreshing taste and nutritional benefits. It can be consumed on its own or as part of various drinks, smoothies, or recipes. Juices are typically rich in vitamins, minerals, and antioxidants, making them a popular choice for health-conscious individuals.
+                                Juice is a natural liquid extracted from fruits or vegetables, often enjoyed for its refreshing taste and nutritional benefits. It can be consumed on its own or as part of various drinks, smoothies, or recipes. Juices are typically rich in vitamins, minerals, and antioxidants, making them a popular choice for health-conscious individuals.
                             </p>
                         </div>
                     </div>
