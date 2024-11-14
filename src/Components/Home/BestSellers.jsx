@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 const BestSellers = () => {
     const { user } = useContext(AuthContext)
 
-
     const handlePost = (e, shop) => {
         e.preventDefault();
 
@@ -50,35 +49,36 @@ const BestSellers = () => {
         fetch('http://localhost:5000/drinks')
             .then(res => res.json())
             .then(data => setWaters(data))
-            .catch(err => console.log(err)); // Handle any errors
+            .catch(err => console.log(err));
     }, []);
 
     useEffect(() => {
         fetch('http://localhost:5000/fruits')
             .then(res => res.json())
             .then(data => setFruits(data))
-            .catch(err => console.log(err)); // Handle any errors
+            .catch(err => console.log(err));
     }, []);
 
     return (
         <div className="p-2">
-            <div className="flex justify-between items-center">
-                <div className="flex items-center gap-7">
+            <div className="flex justify-between items-center flex-col lg:flex-row">
+                <div className="flex flex-col lg:flex-row items-start gap-7 mb-4 lg:mb-0">
                     <h1 className="text-4xl font-semibold">Best Sellers</h1>
-                    <p>Some of the new products arriving this week</p>
+                    <p className="text-lg">Some of the new products arriving this week</p>
                 </div>
-                <button className="btn rounded-full bg-white text-black px-6 py-2">
+                <button className="btn rounded-full bg-white text-black px-6 py-2 flex items-center gap-2">
                     View All <ArrowRight />
                 </button>
             </div>
-            <div className="flex my-12">
+
+            <div className="flex flex-col lg:flex-row my-12 gap-4">
                 {/* Left Side - Drinks */}
-                <div className="w-2/5 grid grid-cols-1 lg:grid-cols-2 gap-1">
+                <div className="w-full lg:w-2/5 grid grid-cols-1 lg:grid-cols-2 gap-4">
                     {waters.slice(2, 6).map((shop, index) => (
                         <div key={index} className="group relative block overflow-hidden border-2 rounded-lg">
                             <Link to={`/drinksDetails/${shop._id}`}>
                                 <button
-                                    className="absolute start-4 top-4 z-10 rounded-full text-gray-900 transition hover:text-gray-900/75"
+                                    className="absolute top-4 left-4 z-10 rounded-full text-gray-900 transition hover:text-gray-900/75"
                                 >
                                     <span className="sr-only">Wishlist</span>
                                     <p className="bg-red-500 px-3 py-1 rounded-full text-white font-medium">
@@ -88,7 +88,7 @@ const BestSellers = () => {
 
                                 <img
                                     src={shop.image}
-                                    alt=""
+                                    alt={shop.name}
                                     className="h-64 w-full object-cover transition duration-500 group-hover:scale-150 sm:h-72"
                                 />
 
@@ -111,7 +111,6 @@ const BestSellers = () => {
                                 </div>
                             </Link>
 
-                            {/* Corrected form tag */}
                             <form onSubmit={(e) => handlePost(e, shop)} className="p-2">
                                 <button
                                     type="submit"
@@ -125,23 +124,23 @@ const BestSellers = () => {
                 </div>
 
                 {/* Middle Banner */}
-                <div className="w-1/3 grid grid-cols-1 px-2">
-                    <div className="w-full bg-cover bg-center" style={{ backgroundImage: `url('/coco.jpg')` }}>
-                        <div className="pt-12 pb-12 space-y-2 h-full flex flex-col items-start justify-center p-8 text-black">
+                <div className="w-full lg:w-1/3 space-y-4">
+                    <div className="w-full bg-cover bg-center  sm:h-[400px] rounded-lg" style={{ backgroundImage: `url('/coco.jpg')` }}>
+                        <div className="flex flex-col items-start justify-center h-full p-8 text-white bg-black bg-opacity-50">
                             <p className="text-orange-400">Only This Week</p>
-                            <h1 className="text-3xl w-[260px] font-bold text-white">Quality eggs at an affordable price</h1>
-                            <p className="text-lg font-medium text-white">Eat one every day</p>
-                            <button className="btn rounded-full bg-white text-black px-6 py-2">
+                            <h1 className="text-3xl font-bold">Quality eggs at an affordable price</h1>
+                            <p className="text-lg font-medium">Eat one every day</p>
+                            <button className="btn rounded-full bg-white text-black px-6 py-2 mt-4">
                                 Shop Now <ArrowRight />
                             </button>
                         </div>
                     </div>
-                    <div className="w-full bg-cover bg-center" style={{ backgroundImage: `url('/totmto.jpg')` }}>
-                        <div className="pt-12 pb-12 space-y-2 h-full flex flex-col items-start justify-center p-8 text-black">
+                    <div className="w-full bg-cover bg-center sm:h-[400px] rounded-lg" style={{ backgroundImage: `url('/totmto.jpg')` }}>
+                        <div className="flex flex-col items-start justify-center h-full p-8 text-white bg-black bg-opacity-50">
                             <p className="text-orange-400">Only This Week</p>
-                            <h1 className="text-3xl w-[260px] font-bold text-white">Quality tomatoes at an affordable price</h1>
-                            <p className="text-lg font-medium text-white">Eat fresh tomatoes</p>
-                            <button className="btn rounded-full bg-white text-black px-6 py-2">
+                            <h1 className="text-3xl font-bold">Quality tomatoes at an affordable price</h1>
+                            <p className="text-lg font-medium">Eat fresh tomatoes</p>
+                            <button className="btn rounded-full bg-white text-black px-6 py-2 mt-4">
                                 Shop Now <ArrowRight />
                             </button>
                         </div>
@@ -149,12 +148,12 @@ const BestSellers = () => {
                 </div>
 
                 {/* Right Side - Fruits */}
-                <div className="w-2/5 grid grid-cols-1 lg:grid-cols-2 gap-1">
+                <div className="w-full lg:w-2/5 grid grid-cols-1 lg:grid-cols-2 gap-4">
                     {fruits.slice(1, 5).map((shop, index) => (
                         <div key={index} className="group relative block overflow-hidden border-2 rounded-lg">
                             <Link to={`/fruitsDetails/${shop._id}`}>
                                 <button
-                                    className="absolute start-4 top-4 z-10 rounded-full text-gray-900 transition hover:text-gray-900/75"
+                                    className="absolute top-4 left-4 z-10 rounded-full text-gray-900 transition hover:text-gray-900/75"
                                 >
                                     <span className="sr-only">Wishlist</span>
                                     <p className="bg-red-500 px-3 py-1 rounded-full text-white font-medium">
@@ -164,7 +163,7 @@ const BestSellers = () => {
 
                                 <img
                                     src={shop.image}
-                                    alt=""
+                                    alt={shop.name}
                                     className="h-64 w-full object-cover transition duration-500 group-hover:scale-150 sm:h-72"
                                 />
 
@@ -187,7 +186,6 @@ const BestSellers = () => {
                                 </div>
                             </Link>
 
-                            {/* Corrected form tag */}
                             <form onSubmit={(e) => handlePost(e, shop)} className="p-2">
                                 <button
                                     type="submit"
@@ -198,19 +196,6 @@ const BestSellers = () => {
                             </form>
                         </div>
                     ))}
-                </div>
-            </div>
-
-            {/* Promo Section */}
-            <div
-                className="w-full bg-right-bottom bg-red-50 bg-no-repeat bg-end p-2 pt-5 pb-5 rounded-lg"
-                style={{ backgroundImage: `url('/promo.png.png')` }}
-            >
-                <div className="pl-7">
-                    <h1 className="font-semibold text-3xl text-orange-500">
-                        In store or online, your health & safety is our top priority
-                    </h1>
-                    <p>The only supermarket that makes your life easier, makes you enjoy life, and makes it better</p>
                 </div>
             </div>
         </div>

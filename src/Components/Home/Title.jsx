@@ -21,7 +21,7 @@ const Title = () => {
       image: '/Clip path group (4).png'
     },
   ]
-  return <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 mt-14 p-2">
+  return <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:mt-14 mt-20 p-2">
 
     {
       titles.map((title, index) =>

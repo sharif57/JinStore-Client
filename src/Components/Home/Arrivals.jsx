@@ -6,7 +6,7 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Arrivals = () => {
 
-    const {user} = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
 
     const [shops, setShops] = useState([])
 
@@ -54,15 +54,20 @@ const Arrivals = () => {
 
 
     return <div className="p-4 mt-16">
-        <div className="flex justify-between items-center">
-            <div className="flex items-center gap-7">
-                <h1 className="text-4xl font-semibold">New Arrivals</h1>
-                <p>Dont miss this opportunity at a special discount just for this week.</p>
+        <div className="flex flex-col lg:flex-row justify-between items-center mt-8 px-4">
+            <div className="flex flex-col lg:flex-row items-start lg:items-center gap-7">
+                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-[#39245f]">
+                    New Arrivals
+                </h1>
+                <p className="text-sm sm:text-base lg:text-lg text-gray-600">
+                    Don't miss this opportunity at a special discount just for this week.
+                </p>
             </div>
-            <button className="btn  rounded-full bg-white text-black px-6 py-2 ">
-                View All <ArrowRight></ArrowRight>
+            <button className="btn rounded-full bg-white text-black px-6 py-2 mt-4 lg:mt-0">
+                View All <ArrowRight />
             </button>
         </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-6 gap-2 mt-10    ">
             {
                 shops.map((shop, index) =>
@@ -98,13 +103,13 @@ const Arrivals = () => {
                             </div>
                         </Link>
 
-                        <form onSubmit={(e) => handlePost(e, shop)}  className="p-2">
-                             <button
-                                    type="submit"
-                                    className="btn btn-outline w-full rounded-full border-blue-400"
-                                >
-                                    Add to Cart
-                                </button>
+                        <form onSubmit={(e) => handlePost(e, shop)} className="p-2">
+                            <button
+                                type="submit"
+                                className="btn btn-outline w-full rounded-full border-blue-400"
+                            >
+                                Add to Cart
+                            </button>
                         </form>
                     </div>
                 )
