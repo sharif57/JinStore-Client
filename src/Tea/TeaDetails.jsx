@@ -6,45 +6,15 @@ import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import { useCart } from "../Components/CheckOut/CartContext";
 
 
 const TeaDetails = () => {
-    const { user } = useContext(AuthContext);
     const teas = useLoaderData();
     const [teass, setTeas] = useState([]);
 
-    const handlePost = (e, shop) => {
-        e.preventDefault();
-        const EmailName = user?.displayName;
-        const email = user?.email;
-        const photo = user?.photoURL;
-        const name = shop.name;
-        const currentTime = new Date();
-        const image = shop.image || "";
-        const description = shop.description;
-        const weight = shop.weight;
-        const price = shop.price;
-        const discount = shop.discount;
-        const newPost = { name, email, image, currentTime, photo, description, EmailName, weight, price, discount };
+    const { handlePost } = useCart(); // Access handlePost from the CartContext
 
-        fetch('http://localhost:5000/addCart', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(newPost)
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.insertedId) {
-                    Swal.fire({
-                        title: 'Success!',
-                        text: 'Item added to cart successfully',
-                        icon: 'success',
-                        confirmButtonText: 'Cool'
-                    });
-                    e.target.reset();
-                }
-            });
-    };
 
     useEffect(() => {
         fetch('http://localhost:5000/tea')
@@ -87,13 +57,14 @@ const TeaDetails = () => {
                             <h1 className="line-through text-xl md:text-2xl font-semibold ml-3">${teas.discount}</h1>
                         </div>
                     </div>
-                    <div className="space-y-2 md:space-x-9 flex flex-col md:flex-row mt-8">
-                        <button className="btn btn-success w-full md:w-auto">Add to cart</button>
+                    <div className=" md:space-x-9 flex flex-col md:flex-row mt-8">
+
+                        <button onClick={(e) => handlePost(e, teas)} className="btn btn-success w-full md:w-auto">Add to cart</button>
                         <button className="btn btn-outline w-full md:w-auto">Buy Now</button>
                     </div>
                     <div className="my-9 space-y-8 border rounded-lg p-4">
                         <div className="flex gap-4 items-center">
-                            <CreditCard className="text-xl" />
+                            <CreditCard className="" />
                             <p><span className="text-xl font-semibold">Payment</span>. Payment upon receipt, card payment, Google Pay, online card, -5% discount for online payment.</p>
                         </div>
                         <div className="flex gap-4 items-center">
@@ -101,7 +72,7 @@ const TeaDetails = () => {
                             <p><span className="text-xl font-semibold">Warranty</span>. This product cannot be returned in case of proper quality.</p>
                         </div>
                     </div>
-                    <div className="space-x-2 md:space-x-4 flex flex-col md:flex-row">
+                    <div className="space-x-2 lg:space-y-0 space-y-2 md:space-x-4 flex flex-col md:flex-row">
                         <button className="btn flex items-center gap-1"><Heart /> Add to wishlist</button>
                         <button className="btn flex items-center gap-1"><Share /> Share</button>
                         <button className="btn flex items-center gap-1"><GitCompareArrows /> Compare</button>

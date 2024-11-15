@@ -4,6 +4,7 @@ import { CreditCard, GitCompareArrows, Heart, ServerCrash, Share, Star } from "l
 import { useLoaderData } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useCart } from "../Components/CheckOut/CartContext";
 
 
 const JuiceDetails = () => {
@@ -18,6 +19,8 @@ const JuiceDetails = () => {
             .then((data) => setTeas(data))
         // console.log(data);
     }, []);
+    const { handlePost } = useCart(); // Access handlePost from the CartContext
+
     return <div className="p-2">
         <div className="flex justify-between items-center  mx-auto gap-6">
             <div className="w-2/3">
@@ -57,7 +60,7 @@ const JuiceDetails = () => {
                     </div>
                 </div>
                 <div className="space-x-9 mt-8">
-                    <button className="btn btn-success">Add to cart</button>
+                    <button onClick={(e) => handlePost(e, teas)}  className="btn btn-success">Add to cart</button>
                     <button className="btn btn-outline">Buy Now</button>
                 </div>
                 <div className="my-9 space-y-8 border rounded-lg p-4">
@@ -110,9 +113,9 @@ const JuiceDetails = () => {
                                     </p>
                                 </div>
                             </Link>
-                            <div className="p-2">
-                                <Link  className="btn btn-outline w-full rounded-full border-blue-400">Add to Cart</Link>
-                            </div>
+                            <form onSubmit={(e) => handlePost(e, shop)} className="p-2">
+                                <button className="btn btn-outline w-full rounded-full border-blue-400">Add to Cart</button>
+                            </form>
                         </div>
                     )
                 }

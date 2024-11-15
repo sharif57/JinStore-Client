@@ -4,6 +4,7 @@ import { ChevronRight, CreditCard, GitCompareArrows, Heart, ServerCrash, Share, 
 import { useLoaderData } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useCart } from "../CheckOut/CartContext";
 
 const ShopDetails = () => {
     const teas = useLoaderData();
@@ -14,6 +15,9 @@ const ShopDetails = () => {
             .then(res => res.json())
             .then((data) => setTeas(data));
     }, []);
+
+    const { handlePost } = useCart(); // Access handlePost from the CartContext
+
 
     return (
         <div className="p-4 md:p-8">
@@ -66,8 +70,10 @@ const ShopDetails = () => {
                     </div>
 
                     {/* Buttons */}
-                    <div className="flex space-x-4 mt-4">
-                        <button className="btn btn-success w-1/2">Add to Cart</button>
+                    <div className="flex space-x-4 ">
+                        <button onClick={(e) => handlePost(e, teas)} className="btn btn-success w-1/2">
+                            Add to Cart
+                        </button>
                         <button className="btn btn-outline w-1/2">Buy Now</button>
                     </div>
 
@@ -117,7 +123,9 @@ const ShopDetails = () => {
                                     <span className="text-sm line-through text-gray-500">${shop.discount}</span>
                                 </div>
                             </Link>
-                            <button className="btn btn-outline w-full mt-2 rounded-full">Add to Cart</button>
+                            <form onSubmit={(e) => handlePost(e, shop)} className="p-2">
+                                <button className="btn btn-outline w-full rounded-full border-blue-400">Add to Cart</button>
+                            </form>
                         </div>
                     ))}
                 </div>

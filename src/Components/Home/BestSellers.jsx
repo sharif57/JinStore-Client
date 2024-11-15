@@ -96,9 +96,9 @@ const BestSellers = () => {
                             <p className="text-orange-400">Only This Week</p>
                             <h1 className="text-3xl font-bold">Quality eggs at an affordable price</h1>
                             <p className="text-lg font-medium">Eat one every day</p>
-                            <button className="btn rounded-full bg-white text-black px-6 py-2 mt-4">
+                            <Link to={'/drinks'} className="btn rounded-full bg-white text-black px-6 py-2 mt-4">
                                 Shop Now <ArrowRight />
-                            </button>
+                            </Link>
                         </div>
                     </div>
                     <div className="w-full bg-cover bg-center sm:h-[400px] rounded-lg" style={{ backgroundImage: `url('/totmto.jpg')` }}>
@@ -106,9 +106,9 @@ const BestSellers = () => {
                             <p className="text-orange-400">Only This Week</p>
                             <h1 className="text-3xl font-bold">Quality tomatoes at an affordable price</h1>
                             <p className="text-lg font-medium">Eat fresh tomatoes</p>
-                            <button className="btn rounded-full bg-white text-black px-6 py-2 mt-4">
+                            <Link to={'/fruits'} className="btn rounded-full bg-white text-black px-6 py-2 mt-4">
                                 Shop Now <ArrowRight />
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 </div>
