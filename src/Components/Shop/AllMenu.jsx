@@ -1,11 +1,12 @@
 import { Dock, Logs, Grid, List } from "lucide-react";
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Swal from "sweetalert2";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { useCart } from "../CheckOut/CartContext";
 
 const AllMenu = () => {
     const { user } = useContext(AuthContext);
+    const { handlePost } = useCart(); // Access handlePost from the CartContext
     const [shops, setShops] = useState([]);
     const [sortOption, setSortOption] = useState("latest");
     const [isGridLayout, setIsGridLayout] = useState(true);
@@ -25,40 +26,6 @@ const AllMenu = () => {
             sortedShops.sort((a, b) => b.price - a.price);
         }
         setShops(sortedShops);
-    };
-
-    const handlePost = (e, shop) => {
-        e.preventDefault();
-        const newPost = {
-            name: shop.name,
-            email: user?.email,
-            image: shop.image || "",
-            currentTime: new Date(),
-            photo: user?.photoURL,
-            description: shop.description,
-            EmailName: user?.displayName,
-            weight: shop.weight,
-            price: shop.price,
-            discount: shop.discount
-        };
-
-        fetch('http://localhost:5000/addCart', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(newPost)
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.insertedId) {
-                    Swal.fire({
-                        title: 'Success!',
-                        text: 'Item added to cart successfully',
-                        icon: 'success',
-                        confirmButtonText: 'Cool'
-                    });
-                    e.target.reset();
-                }
-            });
     };
 
     return (
