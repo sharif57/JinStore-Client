@@ -1,11 +1,9 @@
-import { Dock, Logs, Grid, List } from "lucide-react";
-import { useContext, useEffect, useState } from "react";
+import {  Grid, List } from "lucide-react";
+import {  useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { useCart } from "../CheckOut/CartContext";
 
 const AllMenu = () => {
-    const { user } = useContext(AuthContext);
     const { handlePost } = useCart(); // Access handlePost from the CartContext
     const [shops, setShops] = useState([]);
     const [sortOption, setSortOption] = useState("latest");

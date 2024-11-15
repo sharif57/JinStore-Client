@@ -1,13 +1,10 @@
 import { ChevronRight } from "lucide-react";
-import { useContext, useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../AuthProvider/AuthProvider";
-import Swal from "sweetalert2";
 import { useCart } from "../Components/CheckOut/CartContext";
 
 const Tea = () => {
 
-    const { user } = useContext(AuthContext)
 
     const [teas, setTeas] = useState([])
 
@@ -21,41 +18,6 @@ const Tea = () => {
     }, []);
 
     const { handlePost } = useCart(); // Access handlePost from the CartContext
-
-    // const handlePost = (e, shop) => {
-    //     e.preventDefault();
-
-    //     const EmailName = user?.displayName;
-    //     const email = user?.email;
-    //     const photo = user?.photoURL;
-    //     const name = shop.name;
-    //     const currentTime = new Date();
-    //     const image = shop.image || "";
-    //     const description = shop.description;
-    //     const weight = shop.weight;
-    //     const price = shop.price;
-    //     const discount = shop.discount;
-
-    //     const newPost = { name, email, image, currentTime, photo, description, EmailName, weight, price, discount };
-
-    //     fetch('http://localhost:5000/addCart', {
-    //         method: 'POST',
-    //         headers: { 'Content-Type': 'application/json' },
-    //         body: JSON.stringify(newPost)
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             if (data.insertedId) {
-    //                 Swal.fire({
-    //                     title: 'Success!',
-    //                     text: 'Item added to cart successfully',
-    //                     icon: 'success',
-    //                     confirmButtonText: 'Cool'
-    //                 });
-    //                 e.target.reset();
-    //             }
-    //         });
-    // };
 
 
     return <div className="p-2">
