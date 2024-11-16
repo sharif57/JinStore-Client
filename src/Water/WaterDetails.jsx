@@ -71,8 +71,8 @@ const WaterDetails = () => {
                     </div>
 
                     {/* Action Buttons */}
-                    <div className="space-x-9 mt-8">
-                        <button onClick={(e) => handlePost(e, teas)}  className="btn btn-success w-full lg:w-auto">Add to cart</button>
+                    <div className="lg:space-x-9 space-y-3 mt-8">
+                        <button onClick={(e) => handlePost(e, teas)} className="btn btn-success w-full lg:w-auto">Add to cart</button>
                         <button className="btn btn-outline w-full lg:w-auto">Buy Now</button>
                     </div>
 
@@ -91,11 +91,18 @@ const WaterDetails = () => {
                     </div>
 
                     {/* Wishlist, Share, and Compare */}
-                    <div className="space-x-4">
-                        <button className="btn"><Heart /> Add to wishlist</button>
-                        <button className="btn"><Share /> Share this Product</button>
-                        <button className="btn"><GitCompareArrows /> Compare</button>
+                    <div className="flex flex-col lg:flex-row space-y-2 lg:space-y-0 lg:space-x-4">
+                        <button className="btn flex items-center gap-2">
+                            <Heart /> Add to wishlist
+                        </button>
+                        <button className="btn flex items-center gap-2">
+                            <Share /> Share this Product
+                        </button>
+                        <button className="btn flex items-center gap-2">
+                            <GitCompareArrows /> Compare
+                        </button>
                     </div>
+
                 </div>
             </div>
 

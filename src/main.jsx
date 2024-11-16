@@ -123,8 +123,8 @@ const router = createBrowserRouter([
       }, {
         path: '/checkOut',
         element: <Payment></Payment>
-      }
-
+      },
+     
     ]
   },
   {

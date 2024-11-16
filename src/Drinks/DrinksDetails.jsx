@@ -34,7 +34,7 @@ const DrinksDetails = () => {
             <Link to={''}>JuiceDetails</Link>
 
         </div>
-        <div className="flex justify-between items-center  mx-auto gap-6">
+        {/* <div className="flex justify-between items-center  mx-auto gap-6">
             <div className="w-2/3">
                 <Carousel>
                     <div >
@@ -93,7 +93,82 @@ const DrinksDetails = () => {
                     <button className="btn"><GitCompareArrows /> Compare</button>
                 </div>
             </div>
+        </div> */}
+
+        <div className="flex flex-col lg:flex-row justify-between items-center gap-6 mx-auto">
+            {/* Image Carousel */}
+            <div className="w-full lg:w-2/3">
+                <Carousel>
+                    <div>
+                        <img className="transition duration-500 group-hover:scale-150 w-full object-cover" src={teas.image} alt="Product" />
+                    </div>
+                    <div>
+                        <img src='/Link → 1-109-700x700.jpg.png' alt="Related Product" />
+                    </div>
+                    <div>
+                        <img src='/Link → 1-109-700x700.jpg.png' alt="Related Product" />
+                    </div>
+                </Carousel>
+            </div>
+
+            {/* Product Info */}
+            <div className="space-y-8 w-full lg:w-2/5">
+                <h1 className="text-4xl font-semibold">{teas.name}</h1>
+                <p className="text-2xl font-mono">Net weight: {teas.volume}</p>
+                <div className="flex gap-2 p-2 border rounded-lg w-2/5 text-center">
+                    <Star className="text-yellow-400" />
+                    <Star className="text-yellow-400" />
+                    <Star className="text-yellow-400" />
+                    <Star className="text-yellow-400" />
+                    <Star className="text-yellow-400" />
+                    <div>
+                        <h1>SKU:{teas._id}</h1>
+                    </div>
+                </div>
+                <p>{teas.description}</p>
+
+                {/* Price and Discount */}
+                <div className="flex items-end">
+                    <h1 className="text-5xl font-bold text-red-500">${teas.price}</h1>
+                    <h1 className="line-through text-2xl font-semibold">${teas.discount}</h1>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="lg:space-x-9 space-y-3 mt-8">
+                    <button onClick={(e) => handlePost(e, teas)} className="btn btn-success w-full lg:w-auto">Add to cart</button>
+                    <button className="btn btn-outline w-full lg:w-auto">Buy Now</button>
+                </div>
+
+                {/* Payment and Warranty Information */}
+                <div className="my-9 space-y-8 border rounded-lg p-4">
+                    <div className="flex gap-6 items-center">
+                        <CreditCard className="size-12" />
+                        <p className="text-xl font-semibold">Payment</p>
+                        <p>Payment upon receipt of goods, Payment by card in the department, Google Pay, Online card, -5% discount in case of payment</p>
+                    </div>
+                    <div className="flex gap-6 items-center">
+                        <ServerCrash className="size-12" />
+                        <p className="text-xl font-semibold">Warranty</p>
+                        <p>The Consumer Protection Act does not provide for the return of this product of proper quality.</p>
+                    </div>
+                </div>
+
+                {/* Wishlist, Share, and Compare */}
+                <div className="flex flex-col lg:flex-row space-y-2 lg:space-y-0 lg:space-x-4">
+                    <button className="btn flex items-center gap-2">
+                        <Heart /> Add to wishlist
+                    </button>
+                    <button className="btn flex items-center gap-2">
+                        <Share /> Share this Product
+                    </button>
+                    <button className="btn flex items-center gap-2">
+                        <GitCompareArrows /> Compare
+                    </button>
+                </div>
+
+            </div>
         </div>
+
         <div className="mt-14">
             <h1 className="text-3xl font-semibold">Related products</h1>
             <div className="grid grid-cols-1 lg:grid-cols-6 mt-10  mb-10  ">
