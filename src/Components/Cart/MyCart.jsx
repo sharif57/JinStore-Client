@@ -193,6 +193,7 @@
 
 import { Link } from "react-router-dom";
 import { useCart } from "../CheckOut/CartContext";
+import { Trash2 } from "lucide-react";
 
 const MyCart = () => {
     const { items, subtotal, totalDiscount, total, handleDelete } = useCart();
@@ -220,7 +221,7 @@ const MyCart = () => {
                                         </div>
                                         <div className="flex flex-1 items-center justify-end gap-2">
                                             <button onClick={() => handleDelete(item._id)} className="text-gray-600 transition hover:text-red-600">
-                                                <span className="">Remove item</span>
+                                                <span className=""><Trash2 /></span>
                                                 {/* SVG for delete icon */}
                                             </button>
                                         </div>
