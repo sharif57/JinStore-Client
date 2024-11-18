@@ -32,6 +32,7 @@ import FruitsDetails from './Fruits & Vegetables/FruitsDetails';
 import MyLocationMap from './Components/Home/MyLocationMap';
 import Payment from './Components/CheckOut/Payment';
 import { CartProvider } from './Components/CheckOut/CartContext';
+import WishCard from './Components/Cart/WishCard';
 
 const router = createBrowserRouter([
   {
@@ -124,6 +125,10 @@ const router = createBrowserRouter([
         path: '/checkOut',
         element: <Payment></Payment>
       },
+      {
+        path:'/wish',
+        element:<WishCard></WishCard>
+      }
      
     ]
   },

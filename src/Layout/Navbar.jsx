@@ -355,11 +355,13 @@ export default function Navbar() {
                             </span>
                         </Link>
                         <Link
-                            to="/blogs/cart"
+                            to="/wish"
                             className="relative inline-flex items-center"
                         >
                             {/* Cart Icon */}
                             <MessageCircleHeart className="size-10 text-gray-800" />
+
+                            
 
                             {/* Badge */}
                             <span className="absolute -top-1.5 -right-1.5 text-[16px] font-semibold text-white bg-red-500 rounded-full size-6 flex items-center justify-center shadow-md ">
