@@ -339,77 +339,73 @@ export default function Navbar() {
                     ))}
 
                     {/* Login and Cart buttons */}
-                    <li className="flex items-center gap-4 mt-4 lg:mt-0 lg:ml-4">
-
-
-                        <Link
-                            to="/myCart"
-                            className="relative inline-flex items-center"
-                        >
-                            {/* Cart Icon */}
-                            <BaggageClaim className="size-10" />
-
-                            {/* Badge */}
-                            <span className="absolute -top-1.5 -right-1.5 text-[12px] font-semibold text-white bg-red-500 rounded-full size-6 flex items-center justify-center shadow-md ">
-                                {items.length}
-                            </span>
-                        </Link>
-                        <Link
-                            to="/wish"
-                            className="relative inline-flex items-center"
-                        >
-                            {/* Cart Icon */}
-                            <MessageCircleHeart className="size-10 text-gray-800" />
-
-                            
-
-                            {/* Badge */}
-                            <span className="absolute -top-1.5 -right-1.5 text-[16px] font-semibold text-white bg-red-500 rounded-full size-6 flex items-center justify-center shadow-md ">
-                                {wish.length}
-                            </span>
-                        </Link>
-
-
-
+                    <li className="flex items-center gap-4 lg:gap-6 mt-4 lg:mt-0 lg:ml-4">
                         <div className="dropdown dropdown-end">
-                            {/* Show this dropdown when the user is logged in */}
                             {user ? (
                                 <>
-                                    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                                        <div className="w-10 rounded-full">
-                                            {/* Show user photo or default photo */}
-                                            <img
-                                                alt="User Avatar"
-                                                src={user.photoURL || "/Figure → testimonial3-personimage1.jpg.png"}
-                                            />
+                                    <div className="flex items-center gap-4">
+                                        {/* Cart and Wish List Icons */}
+                                        <div className="flex items-center gap-4">
+                                            {/* Cart Icon */}
+                                            <Link to="/myCart" className="relative inline-flex items-center">
+                                                <BaggageClaim className="w-6 h-6 text-gray-800" />
+                                                <span className="absolute -top-2 -right-2 text-xs font-semibold text-white bg-red-500 rounded-full w-5 h-5 flex items-center justify-center shadow-md">
+                                                    {items.length}
+                                                </span>
+                                            </Link>
+
+                                            {/* Wishlist Icon */}
+                                            <Link to="/wish" className="relative inline-flex items-center">
+                                                <MessageCircleHeart className="w-6 h-6 text-gray-800" />
+                                                <span className="absolute -top-2 -right-2 text-xs font-semibold text-white bg-red-500 rounded-full w-5 h-5 flex items-center justify-center shadow-md">
+                                                    {wish.length}
+                                                </span>
+                                            </Link>
+                                        </div>
+
+                                        <div>
+                                            {/* User Avatar and Dropdown */}
+                                            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                                <div className="w-10 h-10 rounded-full border-2 border-gray-200 overflow-hidden">
+                                                    <img
+                                                        alt="User Avatar"
+                                                        src={user.photoURL || "/default-avatar.png"}
+                                                        className="w-full h-full object-cover"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <ul
+                                                tabIndex={0}
+                                                className="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow-lg"
+                                            >
+                                                <li>
+                                                    <Link to="/profile" className="flex justify-between items-center">
+                                                        Profile
+                                                        <span className="badge bg-primary text-white">New</span>
+                                                    </Link>
+                                                </li>
+                                                <li>
+                                                    <a className="flex items-center">
+                                                        {user?.displayName}
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a>Settings</a>
+                                                </li>
+                                                <li>
+                                                    <button
+                                                        onClick={handleLogOut}
+                                                        className="w-full text-left px-4 py-2 bg-red-500 text-white rounded-lg shadow-md hover:bg-red-600 transition duration-300"
+                                                    >
+                                                        Log Out
+                                                    </button>
+                                                </li>
+                                            </ul>
                                         </div>
                                     </div>
-                                    <ul
-                                        tabIndex={0}
-                                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
-                                    >
-                                        <li>
-                                            <Link to={'/profile'} className="justify-between">
-                                                Profile
-                                                <span className="badge">New</span>
-                                            </Link>
-                                            <a className="justify-between">
-                                                {user?.displayName}
-                                            </a>
-                                        </li>
-                                        <li><a>Settings</a></li>
-                                        <li>
-                                            <button
-                                                onClick={handleLogOut}
-                                                className="w-full text-left px-4 py-2 bg-red-500 text-white rounded-lg shadow-md hover:bg-red-600 transition duration-300"
-                                            >
-                                                Log Out
-                                            </button>
-                                        </li>
-                                    </ul>
                                 </>
                             ) : (
-                                // Show this if the user is not logged in
+                                // Login Button for Unauthenticated Users
                                 <Link
                                     to="/login"
                                     className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg shadow-md hover:bg-purple-700 transition duration-300"
@@ -419,11 +415,8 @@ export default function Navbar() {
                                 </Link>
                             )}
                         </div>
-
-
-
-
                     </li>
+
                 </ul>
             </div>
         </nav>
