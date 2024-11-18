@@ -19,7 +19,7 @@ const JuiceDetails = () => {
             .then((data) => setTeas(data))
         // console.log(data);
     }, []);
-    const { handlePost } = useCart(); // Access handlePost from the CartContext
+    const { handlePost, handleWish } = useCart(); // Access handlePost from the CartContext
 
     return <div className="p-2">
         {/* <div className="flex justify-between items-center  mx-auto gap-6">
@@ -122,11 +122,12 @@ const JuiceDetails = () => {
                 </div>
 
                 {/* Action Buttons */}
-                <div className="lg:space-x-9 space-y-3 mt-8">
-                    <button onClick={(e) => handlePost(e, teas)} className="btn btn-success w-full lg:w-auto">Add to cart</button>
-                    <button className="btn btn-outline w-full lg:w-auto">Buy Now</button>
+                <div className="flex space-x-4 ">
+                    <button onClick={(e) => handlePost(e, teas)} className="btn btn-success w-1/2">
+                        Add to Cart
+                    </button>
+                    <button onClick={(e) => handleWish(e, teas)} className="btn"><Heart /> Add to wishlist</button>
                 </div>
-
                 {/* Payment and Warranty Information */}
                 <div className="my-9 space-y-8 border rounded-lg p-4">
                     <div className="flex gap-6 items-center">
@@ -143,9 +144,7 @@ const JuiceDetails = () => {
 
                 {/* Wishlist, Share, and Compare */}
                 <div className="flex flex-col lg:flex-row space-y-2 lg:space-y-0 lg:space-x-4">
-                    <button className="btn flex items-center gap-2">
-                        <Heart /> Add to wishlist
-                    </button>
+
                     <button className="btn flex items-center gap-2">
                         <Share /> Share this Product
                     </button>

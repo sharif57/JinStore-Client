@@ -15,7 +15,7 @@ const WaterDetails = () => {
             .then(res => res.json())
             .then((data) => setTeas(data));
     }, []);
-    const { handlePost } = useCart(); // Access handlePost from the CartContext
+    const { handlePost, handleWish } = useCart(); // Access handlePost from the CartContext
 
 
     return (
@@ -71,9 +71,11 @@ const WaterDetails = () => {
                     </div>
 
                     {/* Action Buttons */}
-                    <div className="lg:space-x-9 space-y-3 mt-8">
-                        <button onClick={(e) => handlePost(e, teas)} className="btn btn-success w-full lg:w-auto">Add to cart</button>
-                        <button className="btn btn-outline w-full lg:w-auto">Buy Now</button>
+                    <div className="flex space-x-4 ">
+                        <button onClick={(e) => handlePost(e, teas)} className="btn btn-success w-1/2">
+                            Add to Cart
+                        </button>
+                        <button onClick={(e) => handleWish(e, teas)} className="btn"><Heart /> Add to wishlist</button>
                     </div>
 
                     {/* Payment and Warranty Information */}

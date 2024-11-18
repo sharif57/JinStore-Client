@@ -2,10 +2,8 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 import { CreditCard, GitCompareArrows, Heart, ServerCrash, Share, Star } from "lucide-react";
 import { useLoaderData } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Swal from "sweetalert2";
-import { AuthContext } from "../AuthProvider/AuthProvider";
 import { useCart } from "../Components/CheckOut/CartContext";
 
 
@@ -13,7 +11,7 @@ const TeaDetails = () => {
     const teas = useLoaderData();
     const [teass, setTeas] = useState([]);
 
-    const { handlePost } = useCart(); // Access handlePost from the CartContext
+    const { handlePost, handleWish } = useCart(); // Access handlePost from the CartContext
 
 
     useEffect(() => {
@@ -57,10 +55,11 @@ const TeaDetails = () => {
                             <h1 className="line-through text-xl md:text-2xl font-semibold ml-3">${teas.discount}</h1>
                         </div>
                     </div>
-                    <div className=" md:space-x-9 flex flex-col md:flex-row mt-8">
-
-                        <button onClick={(e) => handlePost(e, teas)} className="btn btn-success w-full md:w-auto">Add to cart</button>
-                        <button className="btn btn-outline w-full md:w-auto">Buy Now</button>
+                    <div className="flex space-x-4 ">
+                        <button onClick={(e) => handlePost(e, teas)} className="btn btn-success w-1/2">
+                            Add to Cart
+                        </button>
+                        <button onClick={(e) => handleWish(e, teas)} className="btn"><Heart /> Add to wishlist</button>
                     </div>
                     <div className="my-9 space-y-8 border rounded-lg p-4">
                         <div className="flex gap-4 items-center">
@@ -73,7 +72,6 @@ const TeaDetails = () => {
                         </div>
                     </div>
                     <div className="space-x-2 lg:space-y-0 space-y-2 md:space-x-4 flex flex-col md:flex-row">
-                        <button className="btn flex items-center gap-1"><Heart /> Add to wishlist</button>
                         <button className="btn flex items-center gap-1"><Share /> Share</button>
                         <button className="btn flex items-center gap-1"><GitCompareArrows /> Compare</button>
                     </div>

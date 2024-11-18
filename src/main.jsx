@@ -118,7 +118,7 @@ const router = createBrowserRouter([
         element: <MyCart></MyCart>
       },
       {
-        path: '/topSelling',
+        path: 'blogs/topSelling',
         element: <Trending></Trending>
       }, {
         path: '/checkOut',

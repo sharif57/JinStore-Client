@@ -5,6 +5,8 @@
 // import { AuthContext } from "../AuthProvider/AuthProvider";
 // import { useCart } from "../Components/CheckOut/CartContext";
 
+import { useEffect } from "react";
+
 
 // const Navbar = () => {
 //     const { user, logOut } = useContext(AuthContext)
@@ -221,166 +223,208 @@
 // };
 // export default Navbar;
 
-import { useEffect, useState } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
-import { MdClose } from "react-icons/md";
-import { HiMenuAlt2 } from "react-icons/hi";
-import { motion } from "framer-motion";
+import { useContext, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { Menu, X, ChevronDown, User, BaggageClaim, MapPin, MessageCircleHeart } from 'lucide-react';
+import axios from 'axios';
+import { AuthContext } from "../AuthProvider/AuthProvider";
+import { useCart } from "../Components/CheckOut/CartContext";
 
-// Example constants for navigation and logo
-const navBarList = [
-    { _id: 1, title: "Home", link: "/" },
-    { _id: 2, title: "Shop", link: "/shop" },
-    { _id: 3, title: "About", link: "/about" },
-    { _id: 4, title: "Contact", link: "/contact" },
-];
 
-const Header = () => {
-    const [showMenu, setShowMenu] = useState(true);
-    const [sidenav, setSidenav] = useState(false);
-    const [category, setCategory] = useState(false);
-    const [brand, setBrand] = useState(false);
-    const location = useLocation();
+export default function Navbar() {
 
-    useEffect(() => {
-        const handleResize = () => {
-            if (window.innerWidth < 667) {
-                setShowMenu(false);
-            } else {
-                setShowMenu(true);
-            }
-        };
+    const [open, setOpen] = useState(false);
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+    const { pathname } = useLocation();
+    const { items, wish } = useCart();
 
-        handleResize(); // Initialize menu visibility on load
-        window.addEventListener("resize", handleResize);
-        return () => window.removeEventListener("resize", handleResize); // Cleanup on unmount
-    }, []);
+    const menuList = [
+        { title: 'Home', path: '/' },
+        { title: 'Shop', path: '/shop' },
+        { title: 'Fruits & Vegetables', path: '/fruits' },
+        { title: 'Beverages', path: '/beverages' },
+        {
+            title: 'Pages',
+            // path: '/blogs',
+            icon: <ChevronDown className="inline w-4 h-4 ml-1" />,
+            submenu: [
+                { title: 'Trending Products', path: '/blogs/topSelling' },
+                { title: 'Contact', path: '/blogs/cart' },
+
+            ],
+        },
+        { title: 'Blog', path: '/blogs' },
+
+    ];
+    const { user, logOut } = useContext(AuthContext)
+    console.log('user ', user);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => console.log('logout successfully'))
+            .catch(error => console.error(error))
+    }
+    // const [cartItems, setCartItems] = useState([]);
+
+    // // Function to fetch cart items
+    // const fetchCartItems = () => {
+    //     if (user?.email) {
+    //         axios.get(`http://localhost:3000/addCart/${user.email}`)
+    //             .then(res => setCartItems(res.data))
+    //             .catch(error => console.error("Error fetching cart items:", error));
+    //     }
+    // };
+
+    // // Initial fetch of cart items
+    // useEffect(() => {
+    //     fetchCartItems();
+    // }, [user]);
+
 
     return (
-        <div className="w-full h-20 bg-white sticky top-0 z-50 border-b-[1px] border-b-gray-200">
-            <nav className="h-full px-4 max-w-container mx-auto relative flex items-center justify-between">
-                {/* Logo Section */}
-                <Link to="/">
-                    <img className="w-20 object-cover" src="/Group 70.png" alt="Logo" />
-                </Link>
+        <nav className="bg-white shadow-md sticky top-0 z-50">
+            <div className="container mx-auto px-6 lg:px-12 py-4 flex justify-between items-center">
+                {/* Logo */}
+                <div className="flex items-center lg:gap-4 gap-2">
+                    <Link to="/" className="flex items-center">
+                        <img className="w-40 md:w-48" src='/Group 70.png' alt="Logo" />
+                    </Link>
+                    {/* <Link className="btn btn-ghost text-xl"><img src="\Group 70.png" alt="" /></Link> */}
+                    <div className="flex items-center">
+                        <Link to={'/map'}>
+                            <MapPin className="size-8" />
+                        </Link>
 
-                {/* Desktop Menu */}
-                {showMenu && (
-                    <motion.ul
-                        initial={{ y: 30, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ duration: 0.5 }}
-                        className="flex items-center gap-6"
-                    >
-                        {navBarList.map(({ _id, title, link }) => (
-                            <li key={_id}>
-                                <NavLink
-                                    className="text-base text-[#767676] hover:font-bold hover:underline underline-offset-4 decoration-[1px] hover:text-[#262626]"
-                                    to={link}
-                                    state={{ data: location.pathname.split("/")[1] }}
-                                >
-                                    {title}
-                                </NavLink>
-                            </li>
-                        ))}
-                    </motion.ul>
-                )}
 
-                {/* Mobile Menu Icon */}
-                <HiMenuAlt2
-                    onClick={() => setSidenav(true)}
-                    className="inline-block md:hidden cursor-pointer w-8 h-8"
-                />
-
-                {/* Mobile Sidenav */}
-                {sidenav && (
-                    <div className="fixed top-0 left-0 w-full h-screen bg-black bg-opacity-80 z-50">
-                        <motion.div
-                            initial={{ x: -300, opacity: 0 }}
-                            animate={{ x: 0, opacity: 1 }}
-                            transition={{ duration: 0.5 }}
-                            className="w-[80%] h-full bg-white relative p-6"
-                        >
-                            {/* Close Button */}
-                            <MdClose
-                                onClick={() => setSidenav(false)}
-                                className="absolute top-4 right-4 text-gray-500 text-2xl cursor-pointer hover:text-red-500"
-                            />
-
-                            {/* Logo in Sidenav */}
-                            <img className="w-28 mb-6" src="/path/to/logo-light.png" alt="Logo" />
-
-                            {/* Sidenav Links */}
-                            <ul className="flex flex-col gap-4">
-                                {navBarList.map(({ _id, title, link }) => (
-                                    <li key={_id}>
-                                        <NavLink
-                                            className="text-base text-gray-800 hover:font-bold hover:underline underline-offset-4 decoration-[1px]"
-                                            to={link}
-                                            state={{ data: location.pathname.split("/")[1] }}
-                                            onClick={() => setSidenav(false)}
-                                        >
-                                            {title}
-                                        </NavLink>
-                                    </li>
-                                ))}
-                            </ul>
-
-                            {/* Shop by Category */}
-                            <div className="mt-6">
-                                <h1
-                                    onClick={() => setCategory(!category)}
-                                    className="flex justify-between items-center text-lg cursor-pointer font-semibold mb-2"
-                                >
-                                    Shop by Category
-                                    <span>{category ? "-" : "+"}</span>
-                                </h1>
-                                {category && (
-                                    <motion.ul
-                                        initial={{ y: 10, opacity: 0 }}
-                                        animate={{ y: 0, opacity: 1 }}
-                                        transition={{ duration: 0.3 }}
-                                        className="text-sm flex flex-col gap-2"
-                                    >
-                                        <li>New Arrivals</li>
-                                        <li>Gadgets</li>
-                                        <li>Accessories</li>
-                                        <li>Electronics</li>
-                                        <li>Others</li>
-                                    </motion.ul>
-                                )}
-                            </div>
-
-                            {/* Shop by Brand */}
-                            <div className="mt-6">
-                                <h1
-                                    onClick={() => setBrand(!brand)}
-                                    className="flex justify-between items-center text-lg cursor-pointer font-semibold mb-2"
-                                >
-                                    Shop by Brand
-                                    <span>{brand ? "-" : "+"}</span>
-                                </h1>
-                                {brand && (
-                                    <motion.ul
-                                        initial={{ y: 10, opacity: 0 }}
-                                        animate={{ y: 0, opacity: 1 }}
-                                        transition={{ duration: 0.3 }}
-                                        className="text-sm flex flex-col gap-2"
-                                    >
-                                        <li>Apple</li>
-                                        <li>Samsung</li>
-                                        <li>Sony</li>
-                                        <li>LG</li>
-                                        <li>Others</li>
-                                    </motion.ul>
-                                )}
-                            </div>
-                        </motion.div>
+                        <div className="lg:pl-3 pl-2 flex flex-col items-start">
+                            <p>Deliver to</p>
+                            <h1 className="font-bold">All</h1>
+                        </div>
                     </div>
-                )}
-            </nav>
-        </div>
-    );
-};
+                </div>
 
-export default Header;
+                {/* Hamburger menu icon for mobile */}
+                <div className="lg:hidden" onClick={() => setOpen(!open)}>
+                    {!open ? <Menu className="w-8 h-8 text-primary" /> : <X className="w-6 h-6 text-primary" />}
+                </div>
+
+                {/* Menu items */}
+                <ul
+                    className={`lg:flex items-center gap-8 text-xl absolute lg:static bg-white lg:bg-transparent w-full lg:w-auto left-0 lg:left-auto transition-all duration-300 ease-in-out ${open ? 'top-20 p-6 lg:p-0' : '-top-96'
+                        }`}
+                >
+                    {menuList.map((item, index) => (
+                        <li
+                            key={index}
+                            className={`relative ${item.path === pathname ? 'text-primary font-bold' : 'text-black'} text-lg lg:my-0 my-2`}
+                            onMouseEnter={() => item.submenu && setDropdownOpen(true)}
+                            onMouseLeave={() => item.submenu && setDropdownOpen(false)}
+                        >
+                            <Link to={item.path} className="flex items-center hover:text-primary transition duration-200">
+                                {item.title}
+                                {item.icon && item.icon}
+                            </Link>
+
+                            {/* Dropdown menu for Pages */}
+                            {item.submenu && dropdownOpen && (
+                                <ul className="absolute left-0 mt-2 bg-white shadow-lg border rounded-lg w-48 text-black z-10">
+                                    {item.submenu.map((subItem, subIndex) => (
+                                        <li key={subIndex} className="px-4 py-2 hover:bg-primary hover:text-white transition duration-200">
+                                            <Link to={subItem.path}>{subItem.title}</Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
+                        </li>
+                    ))}
+
+                    {/* Login and Cart buttons */}
+                    <li className="flex items-center gap-4 mt-4 lg:mt-0 lg:ml-4">
+
+
+                        <Link
+                            to="/myCart"
+                            className="relative inline-flex items-center"
+                        >
+                            {/* Cart Icon */}
+                            <BaggageClaim className="size-10" />
+
+                            {/* Badge */}
+                            <span className="absolute -top-1.5 -right-1.5 text-[12px] font-semibold text-white bg-red-500 rounded-full size-6 flex items-center justify-center shadow-md ">
+                                {items.length}
+                            </span>
+                        </Link>
+                        <Link
+                            to="/blogs/cart"
+                            className="relative inline-flex items-center"
+                        >
+                            {/* Cart Icon */}
+                            <MessageCircleHeart className="size-10 text-gray-800" />
+
+                            {/* Badge */}
+                            <span className="absolute -top-1.5 -right-1.5 text-[16px] font-semibold text-white bg-red-500 rounded-full size-6 flex items-center justify-center shadow-md ">
+                                {wish.length}
+                            </span>
+                        </Link>
+
+
+
+                        <div className="dropdown dropdown-end">
+                            {/* Show this dropdown when the user is logged in */}
+                            {user ? (
+                                <>
+                                    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                        <div className="w-10 rounded-full">
+                                            {/* Show user photo or default photo */}
+                                            <img
+                                                alt="User Avatar"
+                                                src={user.photoURL || "/Figure → testimonial3-personimage1.jpg.png"}
+                                            />
+                                        </div>
+                                    </div>
+                                    <ul
+                                        tabIndex={0}
+                                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+                                    >
+                                        <li>
+                                            <Link to={'/profile'} className="justify-between">
+                                                Profile
+                                                <span className="badge">New</span>
+                                            </Link>
+                                            <a className="justify-between">
+                                                {user?.displayName}
+                                            </a>
+                                        </li>
+                                        <li><a>Settings</a></li>
+                                        <li>
+                                            <button
+                                                onClick={handleLogOut}
+                                                className="w-full text-left px-4 py-2 bg-red-500 text-white rounded-lg shadow-md hover:bg-red-600 transition duration-300"
+                                            >
+                                                Log Out
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </>
+                            ) : (
+                                // Show this if the user is not logged in
+                                <Link
+                                    to="/login"
+                                    className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg shadow-md hover:bg-purple-700 transition duration-300"
+                                >
+                                    <User className="w-5 h-5" />
+                                    Log In
+                                </Link>
+                            )}
+                        </div>
+
+
+
+
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    );
+}
+

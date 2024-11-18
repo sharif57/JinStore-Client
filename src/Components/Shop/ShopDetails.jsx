@@ -16,7 +16,7 @@ const ShopDetails = () => {
             .then((data) => setTeas(data));
     }, []);
 
-    const { handlePost } = useCart(); // Access handlePost from the CartContext
+    const { handlePost, handleWish } = useCart(); // Access handlePost from the CartContext
 
 
     return (
@@ -74,7 +74,7 @@ const ShopDetails = () => {
                         <button onClick={(e) => handlePost(e, teas)} className="btn btn-success w-1/2">
                             Add to Cart
                         </button>
-                        <button className="btn btn-outline w-1/2">Buy Now</button>
+                        <button onClick={(e) => handleWish(e, teas)} className="btn"><Heart /> Add to wishlist</button>
                     </div>
 
                     {/* Additional Information */}
@@ -95,7 +95,6 @@ const ShopDetails = () => {
 
                     {/* Social and Wishlist Buttons */}
                     <div className="lg:flex space-x-4 mt-4">
-                        <button className="btn"><Heart /> Add to wishlist</button>
                         <button className="btn"><Share /> Share</button>
                         <button className="btn"><GitCompareArrows /> Compare</button>
                     </div>
