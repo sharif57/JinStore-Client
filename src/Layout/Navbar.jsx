@@ -340,7 +340,7 @@ export default function Navbar() {
 
                     {/* Login and Cart buttons */}
                     <li className="flex items-center gap-4 lg:gap-6 mt-4 lg:mt-0 lg:ml-4">
-                        <div className="dropdown dropdown-end">
+                        <div className="">
                             {user ? (
                                 <>
                                     <div className="flex items-center gap-4">
@@ -363,7 +363,7 @@ export default function Navbar() {
                                             </Link>
                                         </div>
 
-                                        <div>
+                                        <div className="dropdown dropdown-end">
                                             {/* User Avatar and Dropdown */}
                                             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                                                 <div className="w-10 h-10 rounded-full border-2 border-gray-200 overflow-hidden">

@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const BannerSection = () => {
   return (
@@ -16,9 +17,9 @@ const BannerSection = () => {
             </h1>
             <p className="text-lg font-medium ">
               Eat one every day            </p>
-            <button className="btn  rounded-full bg-white text-black px-6 py-2 ">
+            <Link to={'/shop'} className="btn  rounded-full bg-white text-black px-6 py-2 ">
               Shop Now <ArrowRight></ArrowRight>
-            </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -34,9 +35,9 @@ const BannerSection = () => {
             </h1>
             <p className="text-lg font-medium ">
             Shine the morning...           </p>
-            <button className="btn  rounded-full bg-white text-black px-6 py-2 ">
+            <Link to={'/fruits'} className="btn  rounded-full bg-white text-black px-6 py-2 ">
               Shop Now <ArrowRight></ArrowRight>
-            </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -52,9 +53,9 @@ const BannerSection = () => {
             </h1>
             <p className="text-lg font-medium ">
             Only this week. Don’t miss...</p>
-            <button className="btn  rounded-full bg-white text-black px-6 py-2 ">
+            <Link to={'/water'} className="btn  rounded-full bg-white text-black px-6 py-2 ">
               Shop Now <ArrowRight></ArrowRight>
-            </button>
+            </Link>
           </div>
         </div>
       </div>

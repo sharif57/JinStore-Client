@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Make = () => {
     return (
@@ -13,9 +14,9 @@ const Make = () => {
                         Make your grocery shopping easy with us
                     </h1>
                     <p className="text-lg sm:text-xl font-medium">Only this week. Don’t miss...</p>
-                    <button className="btn rounded-full bg-white text-black px-6 py-2 mt-4">
+                    <Link to={'/shop'} className="btn rounded-full bg-white text-black px-6 py-2 mt-4">
                         Shop Now <ArrowRight />
-                    </button>
+                    </Link>
                 </div>
             </div>
 
@@ -29,9 +30,9 @@ const Make = () => {
                         Get your everyday needs here with us
                     </h1>
                     <p className="text-lg sm:text-xl font-medium">A different kind of grocery store</p>
-                    <button className="btn rounded-full bg-white text-black px-6 py-2 mt-4">
+                    <Link to={'/shop'} className="btn rounded-full bg-white text-black px-6 py-2 mt-4">
                         Shop Now <ArrowRight />
-                    </button>
+                    </Link>
                 </div>
             </div>
         </div>

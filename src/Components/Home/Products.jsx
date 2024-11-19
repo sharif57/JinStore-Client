@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Products = () => {
   return (
@@ -16,9 +17,9 @@ const Products = () => {
             <p className="text-sm sm:text-base lg:text-lg font-medium">
               Shine the morning...
             </p>
-            <button className="btn rounded-full bg-white text-black px-6 py-2">
+            <Link to={'/drinks'} className="btn rounded-full bg-white text-black px-6 py-2">
               Shop Now <ArrowRight />
-            </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -36,9 +37,9 @@ const Products = () => {
             <p className="text-sm sm:text-base lg:text-lg font-medium">
               Only this week. Don’t miss...
             </p>
-            <button className="btn rounded-full bg-white text-black px-6 py-2">
+            <Link to={'/fruits'} className="btn rounded-full bg-white text-black px-6 py-2">
               Shop Now <ArrowRight />
-            </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -56,9 +57,9 @@ const Products = () => {
             <p className="text-sm sm:text-base lg:text-lg font-medium">
               A different kind of grocery store
             </p>
-            <button className="btn rounded-full bg-white text-black px-6 py-2">
+            <Link to={'/juice'} className="btn rounded-full bg-white text-black px-6 py-2">
               Shop Now <ArrowRight />
-            </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -76,9 +77,9 @@ const Products = () => {
             <p className="text-sm sm:text-base lg:text-lg font-medium">
               Brands under one roof
             </p>
-            <button className="btn rounded-full bg-white text-black px-6 py-2">
+            <Link to={'/shop'} className="btn rounded-full bg-white text-black px-6 py-2">
               Shop Now <ArrowRight />
-            </button>
+            </Link>
           </div>
         </div>
       </div>

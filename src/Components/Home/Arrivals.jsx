@@ -29,9 +29,9 @@ const Arrivals = () => {
                     Don't miss this opportunity at a special discount just for this week.
                 </p>
             </div>
-            <button className="btn rounded-full bg-white text-black px-6 py-2 mt-4 lg:mt-0">
+            <Link to={'/shop'} className="btn rounded-full bg-white text-black px-6 py-2 mt-4 lg:mt-0">
                 View All <ArrowRight />
-            </button>
+            </Link>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-6 gap-2 mt-10    ">
