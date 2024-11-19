@@ -43,7 +43,7 @@ const Login = () => {
             });
     }
 
-    return <div className=" my-16 w-96 mx-auto">
+    return <div className=" my-16 lg:w-96 mx-auto">
         <div
             className="relative flex  flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md"
         >

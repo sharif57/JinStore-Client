@@ -1,23 +1,25 @@
 import { ArrowRight, Heart } from "lucide-react";
-import {  useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../CheckOut/CartContext";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Featured = () => {
 
 
     const [teas, setTeas] = useState([])
     const [juices, setJuices] = useState([])
+    const { user } = useContext(AuthContext)
 
     useEffect(() => {
-        fetch('http://localhost:5000/water')
+        fetch('https://jinstore-server.vercel.app/water')
             .then(res => res.json())
             .then(data => setTeas(data))
         // console.log(data);
     }, [])
 
     useEffect(() => {
-        fetch('http://localhost:5000/juice')
+        fetch('https://jinstore-server.vercel.app/juice')
             .then(res => res.json())
             .then(data => setJuices(data))
         // console.log(data);
@@ -81,6 +83,7 @@ const Featured = () => {
 
                             <form onSubmit={(e) => handlePost(e, shop)} className="mt-4 flex gap-4">
                                 <button
+                                    disabled={!user}
                                     type="submit"
                                     className="btn btn-outline w-full rounded-full border-blue-400"
                                 >
@@ -137,6 +140,7 @@ const Featured = () => {
 
                             <form onSubmit={(e) => handlePost(e, shop)} className="mt-4 flex gap-4">
                                 <button
+                                    disabled={!user}
                                     type="submit"
                                     className="btn btn-outline w-full rounded-full border-blue-400"
                                 >

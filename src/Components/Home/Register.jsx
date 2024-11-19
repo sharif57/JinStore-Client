@@ -236,7 +236,7 @@ const Register = () => {
     };
 
     return (
-        <div className="my-16 w-96 mx-auto">
+        <div className="my-16 lg:w-96 mx-auto">
             <div className="relative flex flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
                 <div className="relative mx-4 -mt-6 mb-4 grid h-28 place-items-center overflow-hidden rounded-xl bg-gradient-to-tr from-cyan-600 to-cyan-400 bg-clip-border text-white shadow-lg shadow-cyan-500/40">
                     <h3 className="block font-sans text-3xl font-semibold leading-snug tracking-normal text-white antialiased">Sign Up</h3>

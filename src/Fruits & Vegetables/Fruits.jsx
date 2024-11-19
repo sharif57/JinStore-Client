@@ -1,14 +1,16 @@
-import {  useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../Components/CheckOut/CartContext";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const Fruits = () => {
 
 
     const [shops, setShops] = useState([])
+    const { user } = useContext(AuthContext)
 
     useEffect(() => {
-        fetch('http://localhost:5000/fruits')
+        fetch('https://jinstore-server.vercel.app/fruits')
             .then(res => res.json())
             .then(data => setShops(data))
     }, [])
@@ -59,6 +61,7 @@ const Fruits = () => {
                     {/* Corrected form tag */}
                     <form onSubmit={(e) => handlePost(e, shop)} className="p-2">
                         <button
+                            disabled={!user}
                             type="submit"
                             className="btn btn-outline w-full rounded-full border-blue-400"
                         >

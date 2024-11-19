@@ -1,7 +1,8 @@
 import {  Grid, List } from "lucide-react";
-import {  useEffect, useState } from "react";
+import {  useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../CheckOut/CartContext";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const AllMenu = () => {
     const { handlePost } = useCart(); // Access handlePost from the CartContext
@@ -9,8 +10,10 @@ const AllMenu = () => {
     const [sortOption, setSortOption] = useState("latest");
     const [isGridLayout, setIsGridLayout] = useState(true);
 
+    const {user} = useContext(AuthContext)
+
     useEffect(() => {
-        fetch('http://localhost:5000/shop')
+        fetch('https://jinstore-server.vercel.app/shop')
             .then(res => res.json())
             .then(data => setShops(data));
     }, []);
@@ -82,7 +85,7 @@ const AllMenu = () => {
 
                         {/* Add to Cart Button */}
                         <form onSubmit={(e) => handlePost(e, shop)} className="flex justify-center items-center bg-gray-50 p-4 border-t">
-                            <button type="submit" className="btn btn-outline rounded-full w-full text-black hover:text-white transition-colors">
+                            <button disabled={!user} type="submit" className="btn btn-outline rounded-full w-full text-black hover:text-white transition-colors">
                                 Add to cart
                             </button>
                         </form>

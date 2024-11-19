@@ -14,13 +14,13 @@ export const useCart = () => useContext(CartContext);
 
 // Utility to fetch cart items
 const fetchCartItems = async (email) => {
-    const response = await axios.get(`http://localhost:5000/addCart/${email}`);
+    const response = await axios.get(`https://jinstore-server.vercel.app/addCart/${email}`);
     return response.data;
 };
 
 // Utility to fetch wish-cart items
 const fetchWish = async (email) => {
-    const response = await axios.get(`http://localhost:5000/wishCart/${email}`);
+    const response = await axios.get(`https://jinstore-server.vercel.app/wishCart/${email}`);
     return response.data;
 };
 
@@ -64,7 +64,7 @@ export const CartProvider = ({ children }) => {
             confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/deleteItem/${_id}`, { method: "DELETE" })
+                fetch(`https://jinstore-server.vercel.app/deleteItem/${_id}`, { method: "DELETE" })
                     .then((res) => res.json())
                     .then((data) => {
                         if (data.deletedCount > 0) {
@@ -90,7 +90,7 @@ export const CartProvider = ({ children }) => {
             confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/wishCart/${_id}`, { method: "DELETE" })
+                fetch(`https://jinstore-server.vercel.app/wishCart/${_id}`, { method: "DELETE" })
                     .then((res) => res.json())
                     .then((data) => {
                         if (data.deletedCount > 0) {
@@ -121,7 +121,7 @@ export const CartProvider = ({ children }) => {
             discount: shop.discount,
         };
 
-        postItem("http://localhost:5000/addCart", newPost)
+        postItem("https://jinstore-server.vercel.app/addCart", newPost)
             .then((data) => {
                 if (data.insertedId) {
                     Swal.fire("Success!", "Item added to cart successfully", "success");
@@ -149,7 +149,7 @@ export const CartProvider = ({ children }) => {
             discount: shop.discount,
         };
 
-        postItem("http://localhost:5000/wishCart", newPost)
+        postItem("https://jinstore-server.vercel.app/wishCart", newPost)
             .then((data) => {
                 if (data.insertedId) {
                     Swal.fire("Success!", "Item added to your wish cart successfully", "success");

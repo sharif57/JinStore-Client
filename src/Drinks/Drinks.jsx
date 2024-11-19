@@ -1,15 +1,17 @@
 import { ChevronRight } from "lucide-react";
-import {  useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../Components/CheckOut/CartContext";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const Drinks = () => {
 
 
     const [teas, setTeas] = useState([])
+    const { user } = useContext(AuthContext)
 
     useState(() => {
-        fetch('http://localhost:5000/drinks')
+        fetch('https://jinstore-server.vercel.app/drinks')
             .then(res => res.json())
             .then(data => setTeas(data))
         // console.log(data);
@@ -70,6 +72,7 @@ const Drinks = () => {
                             {/* Corrected form tag */}
                             <form onSubmit={(e) => handlePost(e, shop)} className="p-2">
                                 <button
+                                    disabled={!user}
                                     type="submit"
                                     className="btn btn-outline w-full rounded-full border-blue-400"
                                 >

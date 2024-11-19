@@ -27,7 +27,7 @@ import { useEffect } from "react";
 
 
 //     // useEffect(() => {
-//     //     fetch(`http://localhost:5000/addCart/${user?.email}`)
+//     //     fetch(`https://jinstore-server.vercel.app/addCart/${user?.email}`)
 //     //         .then(res => res.json())
 //     //         .then(data => setItems(data))
 //     // }, [user])
@@ -379,16 +379,16 @@ export default function Navbar() {
                                                 className="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow-lg"
                                             >
                                                 <li>
-                                                    <Link to="/profile" className="flex justify-between items-center">
-                                                        Profile
+                                                    <Link  className="flex justify-between items-center">
+                                                        {user?.displayName}
                                                         <span className="badge bg-primary text-white">New</span>
                                                     </Link>
                                                 </li>
-                                                <li>
+                                                {/* <li>
                                                     <a className="flex items-center">
                                                         {user?.displayName}
-                                                    </a>
-                                                </li>
+                                                    </a> */}
+                                                {/* </li> */}
                                                 <li>
                                                     <a>Settings</a>
                                                 </li>

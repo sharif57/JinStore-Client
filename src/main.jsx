@@ -34,6 +34,7 @@ import Payment from './Components/CheckOut/Payment';
 import { CartProvider } from './Components/CheckOut/CartContext';
 import WishCard from './Components/Cart/WishCard';
 import Contact from './Components/Home/Contact';
+import PrivateRoutes from './AuthProvider/PrivateRoutes';
 
 const router = createBrowserRouter([
   {
@@ -54,8 +55,8 @@ const router = createBrowserRouter([
       },
       {
         path: '/shopDetails/:id',
-        element: <ShopDetails></ShopDetails>,
-        loader: ({ params }) => fetch(`http://localhost:5000/shop/${params.id}`)
+        element: <PrivateRoutes><ShopDetails></ShopDetails></PrivateRoutes>,
+        loader: ({ params }) => fetch(`https://jinstore-server.vercel.app/shop/${params.id}`)
       },
 
       {
@@ -76,8 +77,8 @@ const router = createBrowserRouter([
       },
       {
         path: '/teaDetails/:id',
-        element: <TeaDetails></TeaDetails>,
-        loader: ({ params }) => fetch(`http://localhost:5000/tea/${params.id}`)
+        element:<PrivateRoutes> <TeaDetails></TeaDetails></PrivateRoutes>,
+        loader: ({ params }) => fetch(`https://jinstore-server.vercel.app/tea/${params.id}`)
       },
       {
         path: '/water',
@@ -85,8 +86,8 @@ const router = createBrowserRouter([
       },
       {
         path: '/waterDetails/:id',
-        element: <WaterDetails></WaterDetails>,
-        loader: ({ params }) => fetch(`http://localhost:5000/water/${params.id}`)
+        element: <PrivateRoutes><WaterDetails></WaterDetails></PrivateRoutes>,
+        loader: ({ params }) => fetch(`https://jinstore-server.vercel.app/water/${params.id}`)
       },
       {
         path: '/juice',
@@ -94,8 +95,8 @@ const router = createBrowserRouter([
       },
       {
         path: '/juiceDetails/:id',
-        element: <JuiceDetails></JuiceDetails>,
-        loader: ({ params }) => fetch(`http://localhost:5000/juice/${params.id}`)
+        element: <PrivateRoutes><JuiceDetails></JuiceDetails></PrivateRoutes>,
+        loader: ({ params }) => fetch(`https://jinstore-server.vercel.app/juice/${params.id}`)
       },
       {
         path: '/drinks',
@@ -103,8 +104,8 @@ const router = createBrowserRouter([
       },
       {
         path: '/drinksDetails/:id',
-        element: <DrinksDetails></DrinksDetails>,
-        loader: ({ params }) => fetch(`http://localhost:5000/drinks/${params.id}`)
+        element: <PrivateRoutes><DrinksDetails></DrinksDetails></PrivateRoutes>,
+        loader: ({ params }) => fetch(`https://jinstore-server.vercel.app/drinks/${params.id}`)
       },
       {
         path: '/fruits',
@@ -112,12 +113,12 @@ const router = createBrowserRouter([
       },
       {
         path: '/fruitsDetails/:id',
-        element: <FruitsDetails></FruitsDetails>,
-        loader: ({ params }) => fetch(`http://localhost:5000/fruits/${params.id}`)
+        element: <PrivateRoutes><FruitsDetails></FruitsDetails></PrivateRoutes>,
+        loader: ({ params }) => fetch(`https://jinstore-server.vercel.app/fruits/${params.id}`)
       },
       {
         path: '/myCart',
-        element: <MyCart></MyCart>
+        element: <PrivateRoutes><MyCart></MyCart></PrivateRoutes>
       },
       {
         path: 'blogs/topSelling',
@@ -128,7 +129,7 @@ const router = createBrowserRouter([
       },
       {
         path:'/wish',
-        element:<WishCard></WishCard>
+        element:<PrivateRoutes><WishCard></WishCard></PrivateRoutes>
       },
       {
         path:'/contact',

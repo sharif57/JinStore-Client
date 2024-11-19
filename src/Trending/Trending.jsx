@@ -5,7 +5,7 @@ const Trending = () => {
     const [tops, setTops] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/addCart')
+        fetch('https://jinstore-server.vercel.app/addCart')
             .then(res => res.json())
             .then(data => setTops(data))
     }, [])

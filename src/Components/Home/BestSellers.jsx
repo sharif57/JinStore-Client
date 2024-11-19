@@ -1,9 +1,12 @@
 import { ArrowRight } from "lucide-react";
-import {  useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../CheckOut/CartContext";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const BestSellers = () => {
+
+    const { user } = useContext(AuthContext)
 
     const { handlePost } = useCart(); // Access handlePost from the CartContext
 
@@ -12,14 +15,14 @@ const BestSellers = () => {
     const [fruits, setFruits] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/drinks')
+        fetch('https://jinstore-server.vercel.app/drinks')
             .then(res => res.json())
             .then(data => setWaters(data))
             .catch(err => console.log(err));
     }, []);
 
     useEffect(() => {
-        fetch('http://localhost:5000/fruits')
+        fetch('https://jinstore-server.vercel.app/fruits')
             .then(res => res.json())
             .then(data => setFruits(data))
             .catch(err => console.log(err));
@@ -79,6 +82,7 @@ const BestSellers = () => {
 
                             <form onSubmit={(e) => handlePost(e, shop)} className="p-2">
                                 <button
+                                    disabled={!user}
                                     type="submit"
                                     className="btn btn-outline w-full rounded-full border-blue-400"
                                 >
@@ -154,6 +158,7 @@ const BestSellers = () => {
 
                             <form onSubmit={(e) => handlePost(e, shop)} className="p-2">
                                 <button
+                                    disabled={!user}
                                     type="submit"
                                     className="btn btn-outline w-full rounded-full border-blue-400"
                                 >

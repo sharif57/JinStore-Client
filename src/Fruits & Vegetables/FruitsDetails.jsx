@@ -16,7 +16,7 @@ const FruitsDetails = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/fruits')
+        fetch('https://jinstore-server.vercel.app/fruits')
             .then(res => res.json())
             .then((data) => setTeas(data))
         // console.log(data);

@@ -1,4 +1,5 @@
 import { ArrowRight, Star } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Popular = () => {
     return (
@@ -8,9 +9,9 @@ const Popular = () => {
                     <h1 className="text-3xl lg:text-4xl font-semibold">Popular Companies</h1>
                     <p className="text-lg">Some of the new products arriving this week</p>
                 </div>
-                <button className="btn rounded-full bg-white text-black px-6 py-2 flex items-center gap-2">
+                <Link to={'/blogs'} className="btn rounded-full bg-white text-black px-6 py-2 flex items-center gap-2">
                     View All <ArrowRight />
-                </button>
+                </Link>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 {/* Company Card 1 */}

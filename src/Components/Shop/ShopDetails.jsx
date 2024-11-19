@@ -11,7 +11,7 @@ const ShopDetails = () => {
     const [teass, setTeas] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/shop')
+        fetch('https://jinstore-server.vercel.app/shop')
             .then(res => res.json())
             .then((data) => setTeas(data));
     }, []);
