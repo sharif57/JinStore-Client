@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 /* eslint-disable react/no-unescaped-entities */
 const Banner = () => {
     return (
@@ -17,9 +19,9 @@ const Banner = () => {
                             We have prepared special discounts for you on grocery products. Don't miss these opportunities...
                         </p>
                         <div className="flex flex-col sm:flex-row items-center pt-4">
-                            <button className="btn text-white pr-16 bg-[#634c95] w-full sm:w-auto">
+                            <Link to={'/shop'} className="btn btn-outline text-white     pr-16 bg-[#634c95] w-full sm:w-auto">
                                 Shop Now
-                            </button>
+                            </Link>
 
                             <div className="pl-0 sm:pl-6 mt-4 sm:mt-0 w-full sm:w-auto">
                                 <div className="">

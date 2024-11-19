@@ -2,8 +2,8 @@ const Footer = () => {
     return <div>
         
 
-        <footer className="bg-white">
-            <div className="mx-auto contenier px-4 pb-6 pt-16 sm:px-6 lg:px-8">
+        <footer className="bg-red-50">
+            <div className="mx-auto container px-4 pb-6 pt-16 sm:px-6 lg:px-8">
                 <div className="lg:flex lg:items-center lg:justify-between">
                     <div className="flex justify-center text-teal-600 sm:justify-start">
                        <img className="lg:w-64" src="/Group 70.png" alt="" />

@@ -33,6 +33,7 @@ import MyLocationMap from './Components/Home/MyLocationMap';
 import Payment from './Components/CheckOut/Payment';
 import { CartProvider } from './Components/CheckOut/CartContext';
 import WishCard from './Components/Cart/WishCard';
+import Contact from './Components/Home/Contact';
 
 const router = createBrowserRouter([
   {
@@ -128,6 +129,10 @@ const router = createBrowserRouter([
       {
         path:'/wish',
         element:<WishCard></WishCard>
+      },
+      {
+        path:'/contact',
+        element:<Contact></Contact>
       }
      
     ]
